@@ -1,0 +1,117 @@
+.index-main{
+    display: grid;
+    grid-template-areas: 
+    "products1 products2"
+    "sect1 sect2"
+    ". sect2"
+    "button button";
+    ;
+    .main-section-1{
+        grid-area: sect1;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+        .blocked{
+            transition: 20s;
+            display: none;
+        }
+        form{ 
+            border: .1px solid black;
+            margin-bottom: 5px;
+            .div-a{
+                display: flex;
+                justify-content: center;
+                padding:0 auto;
+                    button{
+                        border: 0;
+                        background-color: green;
+                        color: white;
+                        width: 50%;
+                        border-radius: 10px;
+                }
+            }
+        }
+    }
+    #main-section-2{
+        grid-area: sect2;
+        display: flex;
+        flex-wrap: wrap;
+        div{
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            img{
+                width: 90%;
+                max-width: 300px;
+            }
+            span{
+                font-weight: 700;
+                border: .1px solid black;
+                opacity: 60%;
+                margin: 5px auto;
+            }
+            h2{
+                text-decoration: none;
+                color: black;
+                border: .1px solid black;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .nodisplay{
+                display: none;;
+            }
+        }
+        .hide{
+            display: none;
+        }
+        .div-a{
+            button{
+                margin: 0 auto;
+                border: 0;
+                background-color: black;
+                color: white;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                width: 100%;
+                max-width: 150px;
+            }
+        }
+    }
+    .products1{
+        text-align: center;
+        grid-area: products1;
+        margin-right: 10px;
+        margin-left: 10px;
+        h2{
+            font-size: 16px;
+            border-bottom: .1px solid black;
+            opacity: 50%;
+        }
+    }
+    .products2{
+        text-align: center;
+        grid-area: products2;
+        h2{
+            font-size: 16px;
+            border-bottom: .1px solid black;
+            opacity: 50%;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    }
+    .button{
+        grid-area: button;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100px;
+        border: 0;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}

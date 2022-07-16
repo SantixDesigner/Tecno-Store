@@ -1,0 +1,20 @@
+.nav{
+    .nav-div{
+            ul{
+                text-align: center;
+                margin-left: auto;
+                display: flex;
+                justify-content: space-around;
+                li{
+                    a{
+                        color: white;
+                        transition: .3s;
+                        &:hover{
+                            font-size: 20px;
+                            color: green;
+                        }
+                    }
+                }
+        }
+    }
+}

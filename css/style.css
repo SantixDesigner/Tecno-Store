@@ -1,0 +1,169 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+.nav .nav-div ul {
+  text-align: center;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-around; }
+  .nav .nav-div ul li a {
+    color: white;
+    transition: .3s; }
+    .nav .nav-div ul li a:hover {
+      font-size: 20px;
+      color: green; }
+
+.index-main {
+  display: grid;
+  grid-template-areas: "products1 products2" "sect1 sect2" ". sect2" "button button"; }
+  .index-main .main-section-1 {
+    grid-area: sect1;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto; }
+    .index-main .main-section-1 .blocked {
+      transition: 20s;
+      display: none; }
+    .index-main .main-section-1 form {
+      border: .1px solid black;
+      margin-bottom: 5px; }
+      .index-main .main-section-1 form .div-a {
+        display: flex;
+        justify-content: center;
+        padding: 0 auto; }
+        .index-main .main-section-1 form .div-a button {
+          border: 0;
+          background-color: green;
+          color: white;
+          width: 50%;
+          border-radius: 10px; }
+  .index-main #main-section-2 {
+    grid-area: sect2;
+    display: flex;
+    flex-wrap: wrap; }
+    .index-main #main-section-2 div {
+      display: flex;
+      flex-direction: column;
+      margin: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center; }
+      .index-main #main-section-2 div img {
+        width: 90%;
+        max-width: 300px; }
+      .index-main #main-section-2 div span {
+        font-weight: 700;
+        border: .1px solid black;
+        opacity: 60%;
+        margin: 5px auto; }
+      .index-main #main-section-2 div h2 {
+        text-decoration: none;
+        color: black;
+        border: .1px solid black;
+        font-size: 20px;
+        font-weight: bold; }
+      .index-main #main-section-2 div .nodisplay {
+        display: none; }
+    .index-main #main-section-2 .hide {
+      display: none; }
+    .index-main #main-section-2 .div-a button {
+      margin: 0 auto;
+      border: 0;
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 150px; }
+  .index-main .products1 {
+    text-align: center;
+    grid-area: products1;
+    margin-right: 10px;
+    margin-left: 10px; }
+    .index-main .products1 h2 {
+      font-size: 16px;
+      border-bottom: .1px solid black;
+      opacity: 50%; }
+  .index-main .products2 {
+    text-align: center;
+    grid-area: products2; }
+    .index-main .products2 h2 {
+      font-size: 16px;
+      border-bottom: .1px solid black;
+      opacity: 50%;
+      margin-right: 10px;
+      margin-left: 10px; }
+  .index-main .button {
+    grid-area: button;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100px;
+    border: 0;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px; }
+
+@media (max-width: 991.5px) {
+  .header {
+    text-align: center; } }
+
+.footer {
+  display: flex; }
+  .footer .copyright {
+    width: 100%;
+    text-align: center; }
+    .footer .copyright h3 {
+      font-size: 15px; }
+  .footer .footer-redes {
+    margin-left: auto;
+    display: flex; }
+    .footer .footer-redes img {
+      width: 25px;
+      height: 25px;
+      border-radius: 30%; }
+
+.header {
+  grid-area: header; }
+
+.nav {
+  grid-area: nav; }
+
+.index-main {
+  grid-area: main-index; }
+
+.footer {
+  grid-area: footer; }
+
+.grid-index {
+  display: grid;
+  grid-template-areas: "header header nav" "main-index main-index main-index" "footer footer footer"; }
+
+@media (max-width: 991.5px) {
+  .grid-index {
+    grid-template-areas: "header header" "main-index main-index" "nav nav" "footer footer"; }
+  .index-main {
+    grid-template-areas: "products1 products1" "sect1 sect1" "products2 products2" "sect2 sect2" "button button"; }
+  .main-section-1 form div {
+    padding: 2px;
+    border: .1px solid black;
+    margin: 10px; }
+  .main-section-1 .blocked {
+    display: none; }
+  .nav {
+    position: sticky;
+    bottom: 0;
+    min-height: 50px; }
+    .nav div {
+      transition: .3s;
+      height: 50px; }
+      .nav div ul {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap; }
+        .nav div ul form {
+          display: none; } }

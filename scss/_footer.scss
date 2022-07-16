@@ -1,0 +1,19 @@
+.footer{
+    display: flex;
+    .copyright{
+        width: 100%;
+        text-align: center;
+        h3{
+            font-size: 15px;
+        }
+    }
+    .footer-redes{
+        margin-left: auto;
+        display: flex;
+        img{
+            width: 25px;
+            height: 25px;
+            border-radius: 30%;
+        }
+    }
+}

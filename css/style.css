@@ -7,8 +7,11 @@
   margin-left: auto;
   display: flex;
   justify-content: space-around; }
+  .nav .nav-div ul li .carrito {
+    font-size: 2rem;
+    cursor: pointer; }
   .nav .nav-div ul li a {
-    color: white;
+    color: black;
     transition: .3s; }
     .nav .nav-div ul li a:hover {
       font-size: 20px;
@@ -16,10 +19,11 @@
 
 .index-main {
   display: grid;
-  grid-template-areas: "products1 products2" "sect1 sect2" ". sect2" "button button"; }
+  grid-template-areas: "products1 products2" "sect1 sect2" ". sect2" "main3 main3"; }
   .index-main .main-section-1 {
     grid-area: sect1;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto; }
@@ -29,11 +33,9 @@
     .index-main .main-section-1 form {
       border: .1px solid black;
       margin-bottom: 5px; }
-      .index-main .main-section-1 form .div-a {
-        display: flex;
-        justify-content: center;
+      .index-main .main-section-1 form div {
         padding: 0 auto; }
-        .index-main .main-section-1 form .div-a button {
+        .index-main .main-section-1 form div button {
           border: 0;
           background-color: green;
           color: white;
@@ -53,11 +55,11 @@
       .index-main #main-section-2 div img {
         width: 90%;
         max-width: 300px; }
-      .index-main #main-section-2 div span {
+      .index-main #main-section-2 div .borderDel {
         font-weight: 700;
-        border: .1px solid black;
-        opacity: 60%;
         margin: 5px auto; }
+        .index-main #main-section-2 div .borderDel span {
+          font-weight: bold; }
       .index-main #main-section-2 div h2 {
         text-decoration: none;
         color: black;
@@ -66,17 +68,38 @@
         font-weight: bold; }
       .index-main #main-section-2 div .nodisplay {
         display: none; }
-    .index-main #main-section-2 .hide {
+  .index-main .main-section-3 {
+    display: block;
+    top: 15px;
+    right: 15px;
+    position: fixed;
+    background-color: #004755;
+    padding: 20px;
+    min-height: 98vh;
+    max-height: 98vh;
+    transform: translate(15px, -15px);
+    transition: .5s ease-in-out;
+    overflow: scroll;
+    color: white; }
+    .index-main .main-section-3 div .nodisplay {
       display: none; }
-    .index-main #main-section-2 .div-a button {
-      margin: 0 auto;
-      border: 0;
-      background-color: black;
-      color: white;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      width: 100%;
-      max-width: 150px; }
+    .index-main .main-section-3 div img {
+      border-radius: 100px;
+      background-color: gray;
+      width: 50px; }
+    .index-main .main-section-3 li {
+      list-style: none; }
+      .index-main .main-section-3 li a {
+        text-decoration: none;
+        color: white;
+        background-color: green;
+        padding: 5px;
+        border-radius: 20px; }
+  .index-main .endPrice {
+    border-top: .1px solid black; }
+  .index-main .hide {
+    transition: .5s ease-in-out;
+    transform: translateX(-100vw); }
   .index-main .products1 {
     text-align: center;
     grid-area: products1;
@@ -145,7 +168,7 @@
   .grid-index {
     grid-template-areas: "header header" "main-index main-index" "nav nav" "footer footer"; }
   .index-main {
-    grid-template-areas: "products1 products1" "sect1 sect1" "products2 products2" "sect2 sect2" "button button"; }
+    grid-template-areas: "products1 products1" "sect1 sect1" "products2 products2" "sect2 sect2" "main3 main3" "button button"; }
   .main-section-1 form div {
     padding: 2px;
     border: .1px solid black;
@@ -153,9 +176,10 @@
   .main-section-1 .blocked {
     display: none; }
   .nav {
-    position: sticky;
+    position: fixed;
     bottom: 0;
-    min-height: 50px; }
+    min-height: 50px;
+    width: 100%; }
     .nav div {
       transition: .3s;
       height: 50px; }

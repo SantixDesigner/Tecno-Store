@@ -31,6 +31,7 @@
         "sect1 sect1"
         "products2 products2"
         "sect2 sect2"
+        "main3 main3"
         "button button";
     }
     .main-section-1{
@@ -46,9 +47,10 @@
         }
     }
     .nav{
-        position: sticky;
+        position: fixed;
         bottom: 0;
         min-height: 50px;
+        width: 100%;
             div{
                 transition: .3s;
                 height: 50px;

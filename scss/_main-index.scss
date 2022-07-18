@@ -4,11 +4,12 @@
     "products1 products2"
     "sect1 sect2"
     ". sect2"
-    "button button";
+    "main3 main3";
     ;
     .main-section-1{
         grid-area: sect1;
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         margin-left: auto;
         margin-right: auto;
@@ -19,9 +20,7 @@
         form{ 
             border: .1px solid black;
             margin-bottom: 5px;
-            .div-a{
-                display: flex;
-                justify-content: center;
+            div{
                 padding:0 auto;
                     button{
                         border: 0;
@@ -48,11 +47,12 @@
                 width: 90%;
                 max-width: 300px;
             }
-            span{
+            .borderDel{
                 font-weight: 700;
-                border: .1px solid black;
-                opacity: 60%;
                 margin: 5px auto;
+                span{
+                    font-weight: bold;
+                }
             }
             h2{
                 text-decoration: none;
@@ -65,21 +65,47 @@
                 display: none;;
             }
         }
-        .hide{
-            display: none;
-        }
-        .div-a{
-            button{
-                margin: 0 auto;
-                border: 0;
-                background-color: black;
-                color: white;
-                border-radius: 5px;
-                margin-bottom: 10px;
-                width: 100%;
-                max-width: 150px;
+    }
+    .main-section-3{
+        display: block;
+        top: 15px;
+        right: 15px;
+        position: fixed;
+        background-color: rgb(0, 71, 85);
+        padding: 20px;
+        min-height: 98vh;
+        max-height: 98vh;
+        transform: translate(15px, -15px);
+        transition: .5s ease-in-out;
+        overflow: scroll;
+        color: white;
+        div{
+            .nodisplay{
+                display: none;
+            }
+            img{
+                border-radius: 100px;
+                background-color: gray;
+                width: 50px;
             }
         }
+        li{
+            list-style: none;
+            a{
+                text-decoration: none;
+                color: white;
+                background-color: green;
+                padding: 5px;
+                border-radius: 20px;
+            }
+        }
+    }
+    .endPrice{
+        border-top: .1px solid black;
+    }
+    .hide{
+        transition: .5s ease-in-out;
+        transform: translateX(-100vw);
     }
     .products1{
         text-align: center;

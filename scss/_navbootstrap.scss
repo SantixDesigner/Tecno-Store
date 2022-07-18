@@ -6,8 +6,12 @@
                 display: flex;
                 justify-content: space-around;
                 li{
+                    .carrito{
+                        font-size: 2rem;
+                        cursor: pointer;
+                    }
                     a{
-                        color: white;
+                        color: black;
                         transition: .3s;
                         &:hover{
                             font-size: 20px;

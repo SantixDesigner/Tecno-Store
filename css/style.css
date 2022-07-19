@@ -9,7 +9,10 @@
   justify-content: space-around; }
   .nav .nav-div ul li .carrito {
     font-size: 2rem;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 50s ease-in-out; }
+  .nav .nav-div ul li .hidecarrito {
+    transform: translateX(-1000000px); }
   .nav .nav-div ul li a {
     color: black;
     transition: .3s; }
@@ -19,7 +22,8 @@
 
 .index-main {
   display: grid;
-  grid-template-areas: "products1 products2" "sect1 sect2" ". sect2" "main3 main3"; }
+  grid-template-areas: "products1 products2" "sect1 sect2" ". sect2" "main3 main3" "mainSec4 mainSec4";
+  margin-bottom: none; }
   .index-main .main-section-1 {
     grid-area: sect1;
     display: flex;
@@ -128,6 +132,91 @@
     color: white;
     border-radius: 5px;
     margin-bottom: 10px; }
+  .index-main #main-section-4 {
+    grid-area: mainSec4;
+    display: grid;
+    grid-template-areas: "productos" "cantidad" "precioFinal";
+    height: auto; }
+    .index-main #main-section-4 div {
+      grid-area: productos;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      .index-main #main-section-4 div span {
+        display: none; }
+      .index-main #main-section-4 div .nodisplay {
+        display: none; }
+      .index-main #main-section-4 div img {
+        width: 50px; }
+    .index-main #main-section-4 p:last-of-type {
+      grid-area: cantidad; }
+    .index-main #main-section-4 .endPrice {
+      grid-area: precioFinal; }
+    .index-main #main-section-4 .comprar {
+      display: none; }
+    .index-main #main-section-4 #form {
+      background-color: #686767; }
+      .index-main #main-section-4 #form div {
+        margin: 20px 0;
+        margin-left: 5px;
+        margin-right: 5px; }
+        .index-main #main-section-4 #form div input {
+          text-align: center;
+          background-color: #b57d7d;
+          border: none;
+          color: white;
+          font-weight: bold;
+          outline: none;
+          border-radius: 5px;
+          transition: .5s; }
+          .index-main #main-section-4 #form div input:hover {
+            border-bottom: 0.1px solid #00194a; }
+        .index-main #main-section-4 #form div:nth-of-type(3) {
+          justify-content: center; }
+        .index-main #main-section-4 #form div:last-of-type {
+          justify-content: center; }
+          .index-main #main-section-4 #form div:last-of-type input {
+            padding: 2px; }
+      .index-main #main-section-4 #form .mail {
+        justify-content: center; }
+
+header {
+  background-color: #002957;
+  padding-bottom: 10px; }
+  header form {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    margin-right: 10px; }
+    header form input:first-of-type {
+      margin-right: 20px; }
+    header form a {
+      text-decoration: none;
+      color: white;
+      padding: 2px;
+      background-color: green;
+      margin-left: 5px; }
+    header form .boton {
+      border: none;
+      margin: 0 5px;
+      padding: 2px;
+      color: white;
+      background-color: #001764;
+      font-weight: bold; }
+
+.main-inicio {
+  margin-bottom: 880px; }
+
+footer {
+  background-color: #002957;
+  padding: 19.5px; }
+
+.header {
+  display: flex;
+  flex-wrap: wrap; }
+  .header p {
+    margin: 20px 0 0 20px;
+    font-weight: bold; }
 
 @media (max-width: 991.5px) {
   .header {
@@ -168,7 +257,7 @@
   .grid-index {
     grid-template-areas: "header header" "main-index main-index" "nav nav" "footer footer"; }
   .index-main {
-    grid-template-areas: "products1 products1" "sect1 sect1" "products2 products2" "sect2 sect2" "main3 main3" "button button"; }
+    grid-template-areas: "products1 products1" "sect1 sect1" "products2 products2" "sect2 sect2" "main3 main3" "mainSec4 mainSec4" "button button"; }
   .main-section-1 form div {
     padding: 2px;
     border: .1px solid black;

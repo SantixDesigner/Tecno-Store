@@ -4,8 +4,9 @@
     "products1 products2"
     "sect1 sect2"
     ". sect2"
-    "main3 main3";
-    ;
+    "main3 main3"
+    "mainSec4 mainSec4";
+    margin-bottom: none;
     .main-section-1{
         grid-area: sect1;
         display: flex;
@@ -139,5 +140,71 @@
         color: white;
         border-radius: 5px;
         margin-bottom: 10px;
+    }
+    #main-section-4{
+        grid-area: mainSec4;
+        display: grid;
+        grid-template-areas:
+        "productos"
+        "cantidad"
+        "precioFinal" ;
+        height: auto;
+        div{
+            grid-area: productos;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            span{
+                display: none;
+            }
+            .nodisplay{
+                display: none;
+            }
+            img{
+                width: 50px;
+            }
+        }
+        p:last-of-type{
+            grid-area: cantidad;
+        }
+        .endPrice{
+            grid-area: precioFinal;
+        }
+        .comprar{
+            display: none;
+        }
+        #form{
+            background-color: rgb(104, 103, 103);
+            div{
+                margin: 20px 0;
+                margin-left: 5px;
+                margin-right: 5px;
+                input{
+                    text-align: center;
+                    background-color: rgb(181, 125, 125);
+                    border: none;
+                    color: white;
+                    font-weight: bold;
+                    outline: none;
+                    border-radius: 5px;
+                    transition: .5s;
+                    &:hover{
+                        border-bottom: .1px solid rgb(0, 25, 74);
+                    }
+                }
+                &:nth-of-type(3){
+                    justify-content: center;
+                }
+                &:last-of-type{
+                    justify-content: center;
+                    input{
+                        padding: 2px;
+                    }
+                }
+            }
+            .mail{
+                justify-content: center;
+            }
+        }
     }
 }

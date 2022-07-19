@@ -9,6 +9,10 @@
                     .carrito{
                         font-size: 2rem;
                         cursor: pointer;
+                        transition: 50s ease-in-out;
+                    }
+                    .hidecarrito{
+                        transform: translateX(-1000000px);
                     }
                     a{
                         color: black;

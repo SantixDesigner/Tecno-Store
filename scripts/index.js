@@ -1,4 +1,14 @@
 if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('username') != "")) && (sessionStorage.getItem('password') != null) && (sessionStorage.getItem('password') != "")){
+    let subM = document.getElementById('subM');
+    let nameX = document.getElementById('nameX');
+    let surnameX = document.getElementById('surnameX');
+    let email = document.getElementById('email');
+    let dir = document.getElementById('dir');
+    let header = document.getElementById('header-index');
+    let username = document.createElement('p');
+    let usernameN = sessionStorage.getItem('username');
+    username.innerHTML = `¡Bienvenido ${usernameN}! Espero que disfrutes tu estadía aquí ^-^`;
+    header.append(username);
     let carrito = document.getElementById('carrito');
     carrito.addEventListener('click',()=>{
         document.querySelector('.main-section-3').classList.toggle('hide');
@@ -20,21 +30,20 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         </div>
     </div>
     <div>
-    <button id="boton">APLICAR</button>
-    </div>
-    </div>
-    <div>
-    <div>
-    <label for="">Importe mínimo</label>
-    <input type="range" min="0" max="100000">
+        <button id="boton">APLICAR</button>
     </div>
     <div>
-    <label for="">Importe máximo</label>
-    <input type="range" min="50000" max="200000">
-    </div>
+        <div>
+            <label for="">Importe mínimo</label>
+            <input type="range" min="0" max="100000">
+        </div>
+        <div>
+            <label for="">Importe máximo</label>
+            <input type="range" min="50000" max="200000">
+        </div>
     </div>
     <div>
-    <button>APLICAR</button>
+        <button>APLICAR</button>
     </div>`
     const mainSection1 = document.getElementById('main-section-1');
     mainSection1.append(form);
@@ -114,7 +123,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
             let carrito = document.getElementById('carrito');
             carrito.classList.add('hidecarrito');
             let div = document.getElementById('container');
-            div.innerHTML = mainSection3.innerHTML
+            div.innerHTML = mainSection3.innerHTML;
             mainSection3.remove();
             total.className = "endPrice"
             total.innerHTML = `Total: u$d${additionPrice}`
@@ -122,6 +131,30 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
             mainSection4.classList.remove('hide');
         })
     }
+    let nameXs;
+    let surnameXs;
+    let emailX;
+    let dirX;
+    nameX.addEventListener('focusout',()=>{
+        nameXs = nameX.value;
+    })
+    surnameX.addEventListener('focusout',()=>{
+        surnameXs = surnameX.value;
+    })
+    email.addEventListener('focusout',()=>{
+        emailX = email.value;
+    })
+    dir.addEventListener('focusout',() =>{
+        dirX = dir.value;
+    });
+    subM.addEventListener('click',(e)=>{
+        e.preventDefault();
+        if (nameXs == null || nameXs == "" || surnameXs == null || surnameXs == "" || emailX == null || emailX == "" || emailX.includes('@') == false ||dirX == null || dirX == ""){
+            alert("Le falta ingresar un dato");
+        }else{
+            alert(`Genial ${usernameN}, le estaremos enviando información a ${emailX}, para enviar sus ${cantidadT} productos a ${dirX}, gracias por confiar en nosotros!`);
+        }
+    })
     let eventA = "";
     renderizar(productsCPU);
     buying(mainSection2);

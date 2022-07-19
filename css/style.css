@@ -180,23 +180,23 @@
       .index-main #main-section-4 #form .mail {
         justify-content: center; }
 
-header {
+.headerLoguin {
   background-color: #002957;
   padding-bottom: 10px; }
-  header form {
+  .headerLoguin form {
     display: flex;
     justify-content: flex-end;
     padding-top: 20px;
     margin-right: 10px; }
-    header form input:first-of-type {
+    .headerLoguin form input:first-of-type {
       margin-right: 20px; }
-    header form a {
+    .headerLoguin form a {
       text-decoration: none;
       color: white;
       padding: 2px;
       background-color: green;
       margin-left: 5px; }
-    header form .boton {
+    .headerLoguin form .boton {
       border: none;
       margin: 0 5px;
       padding: 2px;
@@ -210,6 +210,26 @@ header {
 footer {
   background-color: #002957;
   padding: 19.5px; }
+
+@media (max-width: 680px) {
+  .headerLoguin {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+    .headerLoguin form {
+      flex-direction: column; }
+      .headerLoguin form input {
+        width: 90%;
+        max-width: 200px; }
+        .headerLoguin form input:nth-of-type(1) {
+          margin-left: 5px; }
+        .headerLoguin form input:nth-of-type(2) {
+          margin-left: 5px; }
+      .headerLoguin form a {
+        width: 90%;
+        max-width: 200px;
+        padding: 0;
+        text-align: center; } }
 
 .header {
   display: flex;
@@ -280,3 +300,9 @@ footer {
         flex-wrap: wrap; }
         .nav div ul form {
           display: none; } }
+
+@media (max-width: 437px) {
+  #main-section-4 form #div1 input {
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto; } }

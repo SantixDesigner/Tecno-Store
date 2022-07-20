@@ -6,28 +6,14 @@ let save = document.getElementById('save');
 if (((sessionStorage.getItem('username') == null) || (sessionStorage.getItem('username') == "")) && ((sessionStorage.getItem('password') == null) || (sessionStorage.getItem('password') == "")) || ((sessionStorage.getItem('username') != null) || (sessionStorage.getItem('username') != "")&& sessionStorage.getItem('password') == null) || ((sessionStorage.getItem('username') == null || sessionStorage.getItem('username') == "") && (sessionStorage.getItem('password') != null) || (sessionStorage.getItem('password') != ""))){
     let userN;
     let passwordN;
-    const getUser = (userN) =>{
-        if (sessionStorage.getItem('username') == null){
-            user.addEventListener('focusout',()=>{
-                userN = user.value;
-                save.addEventListener('click',e=>{
-                    sessionStorage.setItem('username',userN);
-                })
-            })
-        }
-    }
-    const getPassword = (passwordN) =>{
-        if (sessionStorage.getItem('password') == null){
-            password.addEventListener('focusout',(e) =>{
-                passwordN = password.value;
-                save.addEventListener('click',e=>{
-                    sessionStorage.setItem('password',passwordN);
-                })
-            })
-        }
-    }
-    getUser(userN);
-    getPassword(passwordN);
+    user.addEventListener('input',()=>{
+        userN = user.value;
+        sessionStorage.setItem('username',userN);
+    })
+    password.addEventListener('input',(e) =>{
+        passwordN = password.value;
+        sessionStorage.setItem('password',passwordN);
+    })
     reset.addEventListener('click',e =>{
         sessionStorage.clear();
     })

@@ -57,8 +57,10 @@
       margin-right: auto;
       text-align: center; }
       .index-main #main-section-2 div img {
-        width: 90%;
-        max-width: 300px; }
+        width: 100%;
+        max-width: 270px;
+        min-height: 270px;
+        max-height: 270px; }
       .index-main #main-section-2 div .borderDel {
         font-weight: 700;
         margin: 5px auto; }
@@ -234,6 +236,9 @@ footer {
 .header {
   display: flex;
   flex-wrap: wrap; }
+  .header h1 a {
+    text-decoration: none;
+    color: white; }
   .header p {
     margin: 20px 0 0 20px;
     font-weight: bold; }

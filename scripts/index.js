@@ -1,4 +1,64 @@
 if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('username') != "")) && (sessionStorage.getItem('password') != null) && (sessionStorage.getItem('password') != "")){
+    let inputBuscar = document.getElementById('inputBuscar');
+    let buscar = document.getElementById('buscar');
+    let buscarS = "";
+    let filtrar;
+    inputBuscar.addEventListener('input',(e)=>{
+        buscarS = e.target.value;
+        buscarS = buscarS.toUpperCase();
+        if (minimoN == 0 && maximoN == 50000){
+            filtrar = productsCPU.filter(el => el.nameS.includes(buscarS) || el.marca.includes(buscarS));
+            console.log(buscarS);
+            if (e.key == "Enter"){
+                e.preventDefault();
+                renderizar(filtrar);
+            }
+        } else if (minimoN != 0 && maximoN != 50000){
+            filtrar = productsCPU.filter(el => (el.nameS.includes(buscarS) || el.marca.includes(buscarS)) && el.price > minimoN && el.price < maximoN);
+            if (e.key == "Enter"){
+                e.preventDefault();
+                renderizar(filtrar);
+            }
+        }
+    });
+    buscar.addEventListener('click',(e)=>{
+        e.preventDefault();
+        renderizar(filtrar);
+    })
+    let minimo = document.getElementById('minimo');
+    let maximo = document.getElementById('maximo');
+    let minimoN = 0;
+    let maximoN = 50000;
+    let valueMinimo = document.getElementById('valueMinimo');
+    let valueMaximo = document.getElementById('valueMaximo');
+    valueMinimo.innerHTML = `${valueMinimo.value}`
+    valueMaximo.innerHTML = `${valueMaximo.value}`
+    minimo.addEventListener('input',(e)=>{
+        minimoN = e.target.value;
+        valueMinimo.value = minimoN;
+        minimoN = parseInt(minimoN);
+    });
+    maximo.addEventListener('input',(e)=>{
+        maximoN = e.target.value;
+        valueMaximo.value = maximoN
+        maximoN = parseInt(maximoN);
+    })
+    let importe = document.getElementById('importe');
+    importe.addEventListener('click',(e) =>{
+        e.preventDefault();
+        if ((eventA == "todas" || eventA == "" && buscarS == eventA)){
+            let filtrarPrecio = productsCPU.filter(el=>el.price > minimoN && el.price < maximoN);
+            renderizar(filtrarPrecio);
+        }
+        else if (buscarS != eventA){
+            let filtrarPrecio = productsCPU.filter(el => el.price > minimoN && el.price < maximoN && el.nameS.includes(buscarS));
+            renderizar(filtrarPrecio);
+        }
+        else{
+            let filtrarPrecio = productsCPU.filter(el=> el.price > minimoN && el.price < maximoN && el.marca == eventA);
+            renderizar(filtrarPrecio);
+        }
+    })
     let subM = document.getElementById('subM');
     let nameX = document.getElementById('nameX');
     let surnameX = document.getElementById('surnameX');
@@ -13,60 +73,76 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     carrito.addEventListener('click',()=>{
         document.querySelector('.main-section-3').classList.toggle('hide');
     })
-    let form = document.createElement('form');
-    form.innerHTML = `
-    <div id="categorias">
-        <div>
-            <label>Todos</label>
-            <input class="todas" type="radio" value="todas" name="asd">
-        </div>
-        <div>
-            <label>AMD</label>
-            <input class="AMD" type="radio" value="AMD" name="asd">
-        </div>
-        <div>
-            <label>Intel</label>
-            <input class="Intel" type="radio" value="Intel" name="asd">
-        </div>
-    </div>
-    <div>
-        <button id="boton">APLICAR</button>
-    </div>
-    <div>
-        <div>
-            <label for="">Importe mínimo</label>
-            <input type="range" min="0" max="100000">
-        </div>
-        <div>
-            <label for="">Importe máximo</label>
-            <input type="range" min="50000" max="200000">
-        </div>
-    </div>
-    <div>
-        <button>APLICAR</button>
-    </div>`
-    const mainSection1 = document.getElementById('main-section-1');
-    mainSection1.append(form);
+    let form = document.getElementById('formCategory')
     const mainSection2 = document.querySelector("#main-section-2");
     let additionPrice = 0;
     const productsCPU = [
-        {id: 1, nameS: "Ryzen 7 3700x", price: 6500, marca: "AMD", link: "./assets/ryzenej.jpg"},
-        {id: 2, nameS: "i5 9400F", price: 2500, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 3, nameS: "Ryzen 3 1200", price: 1100, marca: "AMD", link: "./assets/ryzenej.jpg"},
-        {id: 4, nameS: "i7 7700K", price: 3000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 5, nameS: "i9 9900KF", price: 5000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 6, nameS: "Ryzen 5 2400g", price: 1800, marca: "AMD", link:"./assets/ryzenej.jpg"},
-        {id: 7, nameS: "i5 10600K", price: 7635, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 8, nameS: "Ryzen 3 2200g", price: 1350, marca: "AMD", link:"./assets/ryzenej.jpg"},
-        {id: 9, nameS: "i7 12700KF", price: 10000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 10, nameS: "Ryzen 9 3900x", price: 9000, marca: "AMD", link:"./assets/ryzenej.jpg"},
-        {id: 11, nameS: "i9 12900K", price: 30000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 12, nameS: "Ryzen 5 3600", price: 2500, marca: "AMD", link: "./assets/ryzenej.jpg"},
-        {id: 13, nameS: "Ryzen 5 5600x", price: 8000, marca: "AMD", link: "./assets/ryzenej.jpg"},
-        {id: 14, nameS: "i5 12400F", price: 9000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 15, nameS: "i3 9100F", price: 2000, marca: "Intel", link: "./assets/intel.jpeg"},
-        {id: 16, nameS: "Ryzen 9 3990xt", price: 13370, marca: "AMD", link: "./assets/ryzenej.jpg"},
-        {id: 17, nameS: "i9 12900F", price: 18000, marca: "Intel", link: "./assets/intel.jpeg"}
+        {id: 1, nameS: "RYZEN 7 3700X", price: 6500, marca: "AMD", link: "./assets/Ryzen7.jpeg"},
+        {id: 2, nameS: "I5 9400F", price: 2500, marca: "INTEL", link: "./assets/i5-9400F.jpg"},
+        {id: 3, nameS: "RYZEN 3 1200", price: 1100, marca: "AMD", link: "./assets/ryzenej.jpg"},
+        {id: 4, nameS: "I7 7700K", price: 3000, marca: "INTEL", link: "./assets/intel.jpeg"},
+        {id: 5, nameS: "I9 9900KF", price: 5000, marca: "INTEL", link: "./assets/i9-9900KF.jpg"},
+        {id: 6, nameS: "RYZEN 5 2400G", price: 1800, marca: "AMD", link:"./assets/ryzen5.jpeg"},
+        {id: 7, nameS: "I5 10600K", price: 7635, marca: "INTEL", link: "./assets/i5-10400F.jpg"},
+        {id: 8, nameS: "RYZEN 3 2200G", price: 1350, marca: "AMD", link:"./assets/ryzenej.jpg"},
+        {id: 9, nameS: "I7 12700KF", price: 10000, marca: "INTEL", link: "./assets/i7-12700K.jpg"},
+        {id: 10, nameS: "RYZEN 9 3900X", price: 9000, marca: "AMD", link:"./assets/Ryzen9.jpg"},
+        {id: 11, nameS: "I9 12900K", price: 30000, marca: "INTEL", link: "./assets/i9-12900.jpeg"},
+        {id: 12, nameS: "RYZEN 5 3600", price: 2500, marca: "AMD", link: "./assets/Ryzen5.jpeg"},
+        {id: 13, nameS: "RYZEN 5 5600X", price: 8000, marca: "AMD", link: "./assets/Ryzen5.jpeg"},
+        {id: 14, nameS: "I5 12400F", price: 9000, marca: "INTEL", link: "./assets/i5-12400F.jpeg"},
+        {id: 15, nameS: "I3 9100F", price: 2000, marca: "INTEL", link: "./assets/i3-9100f.jpeg"},
+        {id: 16, nameS: "RYZEN 9 3990XT", price: 13370, marca: "AMD", link: "./assets/Ryzen9.jpg"},
+        {id: 17, nameS: "I9 12900F", price: 18000, marca: "INTEL", link: "./assets/i9-12900.jpeg"},
+        {id: 18, nameS: "FUENTE GENÉRICA 500W", price: 5000, marca: "FUENTE", link:"./assets/500wgen.jpg"},
+        {id: 19, nameS: "FUENTE EVGA 600W 80 PLUS BRONCE", price: 5000, marca: "FUENTE", link:"./assets/600wevga.png"},
+        {id: 20, nameS: "FUENTE 750W CORSAIR 80 PLUS", price: 5000, marca: "FUENTE", link:"./assets/750w.jpg"},
+        {id: 21, nameS: "FUENTE 1000W EVGA 80 PLUS", price: 5000, marca: "FUENTE", link:"./assets/1000wevga.jpg"},
+        {id: 22, nameS: "MOTHER A320 AM4", price: 5000, marca: "MOTHER", link:"./assets/a320.jpg"},
+        {id: 23, nameS: "MOTHER ASUS B-550 AM4", price: 5000, marca: "MOTHER", link:"./assets/asus-b550.jpg"},
+        {id: 24, nameS: "GABINETE ASUS", price: 5000, marca: "GABINETE", link:"./assets/asus.jpg"},
+        {id: 25, nameS: "AURICULAR REDRAGON GAMER", price: 5000, marca: "PERIFERICO", link:"./assets/auricular-redragon.jfif"},
+        {id: 26, nameS: "MOTHER B250 AM4", price: 5000, marca: "MOTHER", link:"./assets/b250.jfif"},
+        {id: 27, nameS: "DISPLAYPORT CABLE VERIFICADO", price: 5000, marca: "ADICIONALES", link:"./assets/displayport.jpg"},
+        {id: 28, nameS: "CABLE DVI PARA MONITORES ANTIGUOS", price: 5000, marca: "ADICIONALES", link:"./assets/dvi.jpg"},
+        {id: 29, nameS: "CABLE ETHERNET", price: 5000, marca: "ADICIONALES", link:"./assets/ethernet.jpg"},
+        {id: 30, nameS: "H61 6TA GEN INTEL", price: 5000, marca: "MOTHER", link:"./assets/h61.png"},
+        {id: 31, nameS: "H110 7MA GEN INTEL", price: 5000, marca: "MOTHER", link:"./assets/h110.jfif"},
+        {id: 32, nameS: "MOUSE G203 GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/g203-mouse.jpg"},
+        {id: 33, nameS: "RAM HP GAMER", price: 5000, marca:"RAM", link:"./assets/hp-ram.jpg"},
+        {id: 34, nameS: "CABLE HDMI", price: 5000, marca:"ADICIONALES", link:"./assets/hdmi.jpg"},
+        {id: 35, nameS: "GABINETE KEDIERS GAMER ATX", price: 5000, marca:"GABINETE", link:"./assets/kediers-atx.jpg"},
+        {id: 36, nameS: "KOTION EACH G9000 GAMER AURICULAR", price: 5000, marca:"PERIFERICO", link:"./assets/KotionEachg9000.jpg"},
+        {id: 37, nameS: "MONITOR DELL 27 PULGADAS", price: 5000, marca:"MONITOR", link:"./assets/monitor-dell-27p.jpg"},
+        {id: 38, nameS: "MONITOR 144HZ 1MS GAMER", price: 5000, marca:"MONITOR", link:"./assets/monitor-144hz-1ms.jpeg"},
+        {id: 39, nameS: "MONITOR LED 60HZ 20 PULGADAS 5MS", price: 5000, marca:"MONITOR", link:"./assets/monitor-led-60hz-5ms-lg.jpeg"},
+        {id: 40, nameS: "MONITOR SAMSUNG CURVO GAMER", price: 5000, marca:"MONITOR", link:"./assets/monitor-samsung-curvo.jfif"},
+        {id: 41, nameS: "MONITOR 19 PULGADAS SAMSUNG", price: 5000, marca:"MONITOR", link:"./assets/monitor-samsung.jpeg"},
+        {id: 42, nameS: "MOTHER ASUS B460 LGA1200", price: 5000, marca:"MOTHER", link:"./assets/mother-asus-b460.png"},
+        {id: 43, nameS: "TECLADO NKB GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/nkb.png"},
+        {id: 44, nameS: "NOGA STORMER AURICULAR GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/noga-stormer.jpg"},
+        {id: 45, nameS: "MOUSE OPTICO BOCA", price: 5000, marca:"PERIFERICO", link:"./assets/optico-boca.jpg"},
+        {id: 46, nameS: "PARLANTE HP GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/parlante-hp.jpg"},
+        {id: 47, nameS: "PLACA WIFI MOTHER", price: 5000, marca:"ADICIONALES", link:"./assets/placa-wifi.jpg"},
+        {id: 48, nameS: "COMBO RAZER GAMER TECLADO Y MOUSE", price: 5000, marca:"PERIFERICO", link:"./assets/razer-combo.jpeg"},
+        {id: 49, nameS: "COMBO REDRAGON GAMER TECLADO Y MOUSE", price: 5000, marca:"PERIFERICO", link:"./assets/redragon-combo.jpg"},
+        {id: 50, nameS: "ROG STRIX GABINETE", price: 5000, marca:"GABINETE", link:"./assets/rog-strix.jfif"},
+        {id: 51, nameS: "ROG SWIFT 360HZ", price: 5000, marca:"MONITOR", link:"./assets/rog-swift-360hz.jpg"},
+        {id: 52, nameS: "FUENTE 1200W ROG", price: 5000, marca:"FUENTE", link:"./assets/rog1200w.jpg"},
+        {id: 53, nameS: "RTX 3060TI NVIDIA", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rtx-3060ti.jpg"},
+        {id: 54, nameS: "RTX 3080TI NVIDIA", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rtx-3080ti.jpg"},
+        {id: 55, nameS: "RTX 2060 NVIDIA", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rtx2060.jpg"},
+        {id: 56, nameS: "RTX 2070TI", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rtx2070ti.jpg"},
+        {id: 57, nameS: "RADEON RX 6600XT", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rx-6600xt.jpg"},
+        {id: 58, nameS: "RADEON RX 6800XT", price: 5000, marca:"PLACA DE VIDEO", link:"./assets/rx-6800xt.jpg"},
+        {id: 59, nameS: "MOTHER Z490 LGA1200", price: 5000, marca:"MOTHER", link:"./assets/z490.png"},
+        {id: 60, nameS: "MOTHER Z590 LGA1200", price: 5000, marca:"MOTHER", link:"./assets/z590.png"},
+        {id: 61, nameS: "XTRIKE ME MOUSE GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/Xtrike-me.jpg"},
+        {id: 62, nameS: "YINDIAO TECLADO GAMER", price: 5000, marca:"PERIFERICO", link:"./assets/yindiao-v4.jfif"},
+        {id: 63, nameS: "MOTHER X570 AM3", price: 5000, marca:"MOTHER", link:"./assets/x570.png"},
+        {id: 64, nameS: "RAM VENGEANCE", price: 5000, marca:"RAM", link:"./assets/vengeance-ram.jpg"},
+        {id: 65, nameS: "CABLE VGA", price: 5000, marca:"ADICIONALES", link:"./assets/vga.jpg"},
+        {id: 66, nameS: "THERMALTAKE V200 GABINETE GAMER", price: 5000, marca:"GABINETE", link:"./assets/thermaltake-v200.jfif"},
     ]
     const renderizar = (productos) =>{
         let contenido = "";
@@ -100,16 +176,10 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
                 console.log(additionPrice);
                 mainSection3.append(e.target.parentElement);
                 console.log(mainSection3);
-                if ((eventA == "todas")||(eventA=="")){
-                    renderizar(productsCPU);
-                    } else{
-                        let listaFiltrada = productsCPU.filter(el => el.marca == eventA);
-                        renderizar(listaFiltrada);
-                    }
-                    array.push(e.target.parentElement.children);
-                    console.log(array);
-                    mainSection3.append(e.target.parentElement);
-                    mainSection3.lastElementChild.lastElementChild.remove();
+                array.push(e.target.parentElement.children);
+                console.log(array);
+                mainSection3.append(e.target.parentElement);
+                mainSection3.lastElementChild.lastElementChild.remove();
             }
             
             comprar.className = "comprar";
@@ -117,6 +187,8 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
             mainSection3.append(comprar);
         })
         comprar.addEventListener('click',(eventE) => {
+            form.remove();
+            mainSection2.remove();
             let cantity = document.createElement('p');
             cantity.innerHTML = `<p>Cantidad total de productos: ${cantidadT}</p>`;
             mainSection4.append(cantity);
@@ -152,7 +224,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         if (nameXs == null || nameXs == "" || surnameXs == null || surnameXs == "" || emailX == null || emailX == "" || emailX.includes('@') == false ||dirX == null || dirX == ""){
             alert("Le falta ingresar un dato");
         }else{
-            alert(`Genial ${usernameN}, le estaremos enviando información a ${emailX}, para enviar sus ${cantidadT} productos a ${dirX}, gracias por confiar en nosotros!`);
+            alert(`Genial ${usernameN}, a la persona ${nameXs} ${surnameXs} le estaremos enviando información a ${emailX}, para enviar sus ${cantidadT} productos a ${dirX}, gracias por confiar en nosotros!`);
         }
     })
     let eventA = "";
@@ -164,6 +236,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         btnSelect.addEventListener('click', (e) =>{
             e.preventDefault();
             eventA = event.target.value;
+            buscarS = eventA;
             if (event.target.value == "todas"){
                 renderizar(productsCPU);
             }else{
@@ -176,9 +249,9 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
 else{
     let main = document.getElementById('main');
     main.remove();
+    let header = document.getElementById('header-index');
     let p = document.createElement('p');
     p.className = "NEEDUSER";
-    p.innerHTML = `Vuelve atrás e ingresa un usuario y una contraseña`;
-    let header = document.getElementById('header');
+    p.innerHTML = `Vuelva atrás y digite un usuario y una contraseña`;
     header.append(p);
 }

@@ -7,14 +7,14 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     inputBuscar.addEventListener('input',(e)=>{
         buscarS = e.target.value;
         buscarS = buscarS.toUpperCase();
-        if (minimoN == 0 && maximoN == 50000){
+        if (minimoN == 0 && maximoN == 100000){
             filtrar = productsCPU.filter(el => el.nameS.includes(buscarS) || el.marca.includes(buscarS));
             console.log(buscarS);
             if (e.key == "Enter"){
                 e.preventDefault();
                 renderizar(filtrar);
             }
-        } else if (minimoN != 0 && maximoN != 50000){
+        } else if (minimoN != 0 && maximoN != 100000){
             filtrar = productsCPU.filter(el => (el.nameS.includes(buscarS) || el.marca.includes(buscarS)) && el.price > minimoN && el.price < maximoN);
             if (e.key == "Enter"){
                 e.preventDefault();

@@ -5,8 +5,27 @@
     "sect1 sect2"
     ". sect2"
     "main3 main3"
+    "containerToast containerToast"
     "mainSec4 mainSec4";
     margin-bottom: none;
+    .container-toast{
+        grid-area: containerToast;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 1031;
+        .separator-hide{
+            padding: .8rem;
+            opacity: 1;
+            min-width: 20rem;
+            min-width: 22rem;
+            max-height: 142.17px;
+            font-size: 1rem;
+            color: #21232a;
+            margin-bottom: 1rem;
+            background-color: green;
+        }
+    }
     .main-section-1{
         grid-area: sect1;
         display: flex;

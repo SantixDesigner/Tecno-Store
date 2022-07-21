@@ -1,68 +1,69 @@
 if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('username') != "")) && (sessionStorage.getItem('password') != null) && (sessionStorage.getItem('password') != "")){
-    let inputBuscar = document.getElementById('inputBuscar');
-    let buscar = document.getElementById('buscar');
-    let buscarS = "";
-    let filtrar;
+    let inputSearch = document.getElementById('inputSearch');
+    let search = document.getElementById('search');
+    let searchS = "";
+    let filter;
     let main = document.getElementById('main');
-    inputBuscar.addEventListener('input',(e)=>{
-        buscarS = e.target.value;
-        buscarS = buscarS.toUpperCase();
-        if (minimoN == 0 && maximoN == 100000){
-            filtrar = productsCPU.filter(el => el.nameS.includes(buscarS) || el.marca.includes(buscarS));
-            console.log(buscarS);
+    inputSearch.addEventListener('input',(e)=>{ //Utiliza el buscador para filtrar elementos
+        searchS = e.target.value;
+        console.log(searchS);
+        searchS = searchS.toUpperCase();
+        if (minimumN == 0 && maximumN == 100000){
+            filter = productsCPU.filter(el => el.nameS.includes(searchS) || el.marca.includes(searchS));
             if (e.key == "Enter"){
                 e.preventDefault();
-                renderizar(filtrar);
+                renderizar(filter);
             }
-        } else if (minimoN != 0 && maximoN != 100000){
-            filtrar = productsCPU.filter(el => (el.nameS.includes(buscarS) || el.marca.includes(buscarS)) && el.price > minimoN && el.price < maximoN);
+        } else if (minimumN != 0 || maximumN != 100000){ //Si no es el rango estipulado, entonces busca segun este
+            filter = productsCPU.filter(el => (el.nameS.includes(searchS) || el.marca.includes(searchS)) && el.price > minimumN && el.price < maximumN);
             if (e.key == "Enter"){
                 e.preventDefault();
-                renderizar(filtrar);
+                renderizar(filter);
             }
         }
     });
-    buscar.addEventListener('click',(e)=>{
+    search.addEventListener('click',(e)=>{
         e.preventDefault();
-        renderizar(filtrar);
-    })
-    let minimo = document.getElementById('minimo');
-    let maximo = document.getElementById('maximo');
-    let minimoN = 0;
-    let maximoN = 100000;
-    let valueMinimo = document.getElementById('valueMinimo');
-    let valueMaximo = document.getElementById('valueMaximo');
-    valueMinimo.value = minimoN;
-    valueMaximo.value = maximoN;
-    valueMinimo.innerHTML = `$${valueMinimo.value}`;
-    valueMaximo.innerHTML = `$${valueMaximo.value}`;
-    minimo.addEventListener('input',(e)=>{
-        minimoN = e.target.value;
-        valueMinimo.value = minimoN;
-        valueMinimo.innerHTML = `$${valueMinimo.value}`;
-        minimoN = parseInt(minimoN);
+        renderizar(filter);
+    }) //La diferencia con los del arriba es en el "buscar"
+    let minimum = document.getElementById('minimum');
+    let maximum = document.getElementById('maximum');
+    let minimumN = 0;
+    let maximumN = 100000;
+    let valueMinimum = document.getElementById('valueMinimum');
+    let valueMaximum = document.getElementById('valueMaximum'); //valores por defecto
+    valueMinimum.value = minimumN;
+    valueMaximum.value = maximumN;
+    valueMinimum.innerHTML = `$${valueMinimum.value}`;
+    valueMaximum.innerHTML = `$${valueMaximum.value}`;
+    minimum.addEventListener('input',(e)=>{
+        minimumN = e.target.value;
+        valueMinimum.value = minimumN;
+        valueMinimum.innerHTML = `$${valueMinimum.value}`;
+        minimumN = parseInt(minimumN);
     });
-    maximo.addEventListener('input',(e)=>{
-        maximoN = e.target.value;
-        valueMaximo.value = maximoN
-        valueMaximo.innerHTML = `$${valueMaximo.value}`;
-        maximoN = parseInt(maximoN);
-    })
-    let importe = document.getElementById('importe');
-    importe.addEventListener('click',(e) =>{
+    maximum.addEventListener('input',(e)=>{
+        maximumN = e.target.value;
+        valueMaximum.value = maximumN
+        valueMaximum.innerHTML = `$${valueMaximum.value}`;
+        maximumN = parseInt(maximumN);
+    }) //El minimum y el maximum estipulan los rangos
+    let importT = document.getElementById('import');
+    importT.addEventListener('click',(e) =>{
         e.preventDefault();
-        if ((eventA == "todas" || eventA == "" && buscarS == eventA)){
-            let filtrarPrecio = productsCPU.filter(el=>el.price > minimoN && el.price < maximoN);
-            renderizar(filtrarPrecio);
+        if ((eventA == "todas" || eventA == "" && searchS == eventA)){
+            let filterPrice = productsCPU.filter(el=>el.price > minimumN && el.price < maximumN);
+            renderizar(filterPrice);
         }
-        else if (buscarS != eventA){
-            let filtrarPrecio = productsCPU.filter(el => el.price > minimoN && el.price < maximoN && el.nameS.includes(buscarS));
-            renderizar(filtrarPrecio);
+        else if (searchS != eventA){
+            let filterPrice = productsCPU.filter(el => (el.nameS.includes(searchS) || el.marca.includes(searchS) ) && el.price > minimumN && el.price < maximumN);
+            console.log(searchS);
+            renderizar(filterPrice);
         }
         else{
-            let filtrarPrecio = productsCPU.filter(el=> el.price > minimoN && el.price < maximoN && el.marca == eventA);
-            renderizar(filtrarPrecio);
-        }
+            let filterPrice = productsCPU.filter(el=> el.price > minimumN && el.price < maximumN && el.marca.includes(eventA));
+            renderizar(filterPrice);
+        } //toma 3 condicionales, si no se cumple, se procede al último
     })
     let subM = document.getElementById('subM');
     let nameX = document.getElementById('nameX');
@@ -74,8 +75,8 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     let usernameN = sessionStorage.getItem('username');
     username.innerHTML = `¡Bienvenido ${usernameN}! Espero que disfrutes tu estadía aquí ^-^`;
     header.append(username);
-    let carrito = document.getElementById('carrito');
-    carrito.addEventListener('click',()=>{
+    let shopping = document.getElementById('shopping');
+    shopping.addEventListener('click',()=>{
         document.querySelector('.main-section-3').classList.toggle('hide');
     })
     let form = document.getElementById('formCategory')
@@ -164,64 +165,55 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         }
         mainSection2.innerHTML = contenido;
     }
-    let array = [];
-    let cantidad = document.createElement('p');
-    let cantidadT = 0;
+    let cantityT = 0;
     let mainSection3 = document.getElementById('main-section-3');
     let mainSection4 = document.getElementById('main-section-4');
-    let total = document.createElement('p');
-    let comprar = document.createElement('li');
-    const buying = (mainSection2) =>{
+    let totalPrice = document.createElement('p');
+    let buy = document.createElement('li'); 
+    const buying = (mainSection2) =>{ 
         mainSection2.addEventListener('click',(e)=>{
             if (e.target.value == "buy"){
                 let nombreProducto = e.target.parentElement.firstElementChild.nextElementSibling.innerHTML;
                 e.preventDefault();
                 mainSection4.append(e.target.parentElement);
-                cantidadT++;
+                cantityT++;
                 additionPrice += parseInt(e.target.previousElementSibling.previousElementSibling.firstElementChild.innerHTML);
-                console.log(additionPrice);
                 mainSection3.append(e.target.parentElement);
-                console.log(mainSection3);
-                array.push(e.target.parentElement.children);
-                console.log(array);
-                let filtrar = productsCPU.filter(el => el.nameS.includes(buscarS) || el.marca.includes(buscarS)&& el.price > minimoN && el.price < maximoN);
-                console.log(buscarS);
-                renderizar(filtrar);
-                mainSection3.append(e.target.parentElement);
+                let filter = productsCPU.filter(el => (el.nameS.includes(searchS) || el.marca.includes(searchS)) && el.price > minimumN && el.price < maximumN);
+                renderizar(filter); //Esto renderiza nuevamente el arreglo para evitar que se vayan eliminando productos sin que el usuario lo haya querido
                 mainSection3.lastElementChild.lastElementChild.remove();
-                let etiquetaDeCompra = document.createElement('div');
+                let ticketOfBuy = document.createElement('div');
                 let toastContainer = document.querySelector('.container-toast');
                 setTimeout(()=>{
-                    etiquetaDeCompra.className = "separator-hide";
-                    etiquetaDeCompra.innerHTML = `
+                    ticketOfBuy.className = "separator-hide";
+                    ticketOfBuy.innerHTML = `
                     <p class="tituloCompra">Gracias por comprar</p>
                     <p>Compraste: ${nombreProducto}</p>`;
-                    toastContainer.append(etiquetaDeCompra);
+                    toastContainer.append(ticketOfBuy);
                     main.append(toastContainer);
                     setTimeout(()=>{
-                        etiquetaDeCompra.remove();
+                        ticketOfBuy.remove();
                     },3000);
-                },1000)
+                },1000) //Esto genera un ticket de compra
             }
             
-            comprar.className = "comprar";
-            comprar.innerHTML = `<a href="#main-section-4">Comprar</a>`
-            mainSection3.append(comprar);
+            buy.className = "buy";
+            buy.innerHTML = `<a href="#main-section-4">Comprar</a>`
+            mainSection3.append(buy);
         })
-        comprar.addEventListener('click',(eventE) => {
+        buy.addEventListener('click',(eventE) => {
             form.remove();
             mainSection2.remove();
             let cantity = document.createElement('p');
-            cantity.innerHTML = `<p>Cantidad total de productos: ${cantidadT}</p>`;
+            cantity.innerHTML = `<p>Cantidad total de productos: ${cantityT}</p>`;
             mainSection4.append(cantity);
-            let carrito = document.getElementById('carrito');
-            carrito.classList.add('hidecarrito');
+            shopping.classList.add('hideshopping');
             let div = document.getElementById('container');
             div.innerHTML = mainSection3.innerHTML;
             mainSection3.remove();
-            total.className = "endPrice"
-            total.innerHTML = `Total: u$d${additionPrice}`
-            mainSection4.append(total);
+            totalPrice.className = "endPrice"
+            totalPrice.innerHTML = `Total: u$d${additionPrice}`
+            mainSection4.append(totalPrice);
             mainSection4.classList.remove('hide');
         })
     }
@@ -246,7 +238,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         if (nameXs == null || nameXs == "" || surnameXs == null || surnameXs == "" || emailX == null || emailX == "" || emailX.includes('@') == false ||dirX == null || dirX == ""){
             alert("Le falta ingresar un dato");
         }else{
-            alert(`Genial ${usernameN}, a la persona ${nameXs} ${surnameXs} le estaremos enviando información a ${emailX}, para enviar sus ${cantidadT} productos a ${dirX}, gracias por confiar en nosotros!`);
+            alert(`Genial ${usernameN}, a la persona ${nameXs} ${surnameXs} le estaremos enviando información a ${emailX}, para enviar sus ${cantityT} productos a ${dirX}, gracias por confiar en nosotros!`);
         }
     })
     let eventA = "";
@@ -254,16 +246,15 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     buying(mainSection2);
     const btnSelect = document.getElementById('boton');
     form.addEventListener ('click',(event) =>{
-        console.log(event.target.value);
         btnSelect.addEventListener('click', (e) =>{
             e.preventDefault();
             eventA = event.target.value;
-            buscarS = eventA;
+            searchS = eventA;
             if (event.target.value == "todas"){
                 renderizar(productsCPU);
             }else{
-                let listaFiltrada = productsCPU.filter(el => el.marca == event.target.value);
-                renderizar(listaFiltrada);
+                let filterList = productsCPU.filter(el => el.marca == event.target.value);
+                renderizar(filterList);
             }
         });
     })
@@ -276,4 +267,4 @@ else{
     p.className = "NEEDUSER";
     p.innerHTML = `Vuelva atrás y digite un usuario y una contraseña`;
     header.append(p);
-}
+} //Si no hay usuario, sucede esto

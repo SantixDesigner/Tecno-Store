@@ -4,14 +4,15 @@
                 text-align: center;
                 margin-left: auto;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-around;
                 li{
-                    .carrito{
+                    .shopping{
                         font-size: 2rem;
                         cursor: pointer;
                         transition: 50s ease-in-out;
                     }
-                    .hidecarrito{
+                    .hideshopping{
                         transform: translateX(-1000000px);
                     }
                     a{

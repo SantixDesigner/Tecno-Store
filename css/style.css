@@ -6,12 +6,13 @@
   text-align: center;
   margin-left: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around; }
-  .nav .nav-div ul li .carrito {
+  .nav .nav-div ul li .shopping {
     font-size: 2rem;
     cursor: pointer;
     transition: 50s ease-in-out; }
-  .nav .nav-div ul li .hidecarrito {
+  .nav .nav-div ul li .hideshopping {
     transform: translateX(-1000000px); }
   .nav .nav-div ul li a {
     color: black;
@@ -170,7 +171,7 @@
       grid-area: cantidad; }
     .index-main #main-section-4 .endPrice {
       grid-area: precioFinal; }
-    .index-main #main-section-4 .comprar {
+    .index-main #main-section-4 .buy {
       display: none; }
     .index-main #main-section-4 #form {
       background-color: #686767; }
@@ -318,9 +319,7 @@ footer {
         flex-direction: row;
         width: 100%;
         justify-content: space-around;
-        flex-wrap: wrap; }
-        .nav div ul form {
-          display: none; } }
+        flex-wrap: wrap; } }
 
 @media (max-width: 437px) {
   #main-section-4 form #div1 input {

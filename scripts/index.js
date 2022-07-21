@@ -184,6 +184,9 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
                 console.log(mainSection3);
                 array.push(e.target.parentElement.children);
                 console.log(array);
+                let filtrar = productsCPU.filter(el => el.nameS.includes(buscarS) || el.marca.includes(buscarS)&& el.price > minimoN && el.price < maximoN);
+                console.log(buscarS);
+                renderizar(filtrar);
                 mainSection3.append(e.target.parentElement);
                 mainSection3.lastElementChild.lastElementChild.remove();
                 let etiquetaDeCompra = document.createElement('div');

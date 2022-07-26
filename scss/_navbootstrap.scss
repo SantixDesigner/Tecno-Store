@@ -15,12 +15,18 @@
                     .hideshopping{
                         transform: translateX(-1000000px);
                     }
+                    .carrito{
+                        cursor: pointer;
+                    }
                     a{
                         color: black;
                         transition: .3s;
+                        background-image: radial-gradient(currentColor, currentColor);
+                        background-position: 50% 100%;
+                        background-size: 0% 0%, 2.5px;
                         &:hover{
-                            font-size: 20px;
                             color: green;
+                            background-size: 100% 2px;
                         }
                     }
                 }

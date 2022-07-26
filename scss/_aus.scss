@@ -1,0 +1,49 @@
+.bodyAUS {
+    display: grid;
+    grid-template-areas: "header header nav"
+        "main main main"
+        "footer footer footer";
+}
+
+.nav {
+    .nav-div{
+        ul{
+            justify-content: none;
+            li {
+                list-style: none;
+                a {
+                    color: black;
+                    transition: .3s;
+                    background-image: radial-gradient(currentColor, currentColor);
+                    background-position: 50% 100%;
+                    background-size: 0% 0%, 2.5px;
+    
+                    &:hover {
+                        color: green;
+                        background-size: 100% 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+.main-aus{
+    grid-area: main;
+    section{
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+        iframe{
+            width: 90%;
+        }
+    }
+}
+@media(max-width:1001px) {
+    .bodyAUS {
+        grid-template-areas: "header header header"
+            "main main main"
+            "nav nav nav"
+            "footer footer footer";
+    }
+}

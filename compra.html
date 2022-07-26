@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoStore - Finalizar compra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="TECNOSTORE ES UN SITIO DE PC DEDICADO A LA VENTA DE COMPONENTES DE COMPUTADORAS">
+</head>
+
+<body>
+    <!-- Header TecnoStore -->
+    <header class="bg-info text-light m-0 p-1 header">
+        <h1 class="m-0 p-1"><a href="./inicios.html">TecnoStore</a></h1>
+    </header>
+    <!-- Sección de compra, aparecen los productos en el JS -->
+    <main class="mainCompra">
+        <section id="onlyMain">
+
+        </section>
+        <section id="sectionBuy">
+            <form action="" class="formPequeno">
+                <div>
+                    <input type="text" id="namePerson" placeholder="Digite su nombre">
+                    <input type="text" id="surnamePerson" placeholder="Digite su apellido">
+                </div>
+                <div><input type="text" id="mailPerson" placeholder="Digite su email"></div>
+                <div><input type="text" id="dirPerson" placeholder="Digite su dirección"></div>
+                <select name="" id="cuotas">
+                    <option value="1cuota" id="1installment"></option>
+                    <option value="3cuotas" id="3installments"></option>
+                    <option value="6cuotas" id="6installments"></option>
+                    <option value="12cuotas" id="12installments"></option>
+                    <option value="18cuotas" id="18installments"></option>
+                    <option value="30cuotas" id="30installments"></option>
+                </select>
+                <div id="acceptButton">
+                    <button id="buyZrS">COMPRAR</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-dark text-light footer">
+        <div class="copyright">
+            <h3>Copyright © 2022 Morillo Santiago</h3>
+        </div>
+        <div class="footer-redes">
+            <img src="./assets/facebook.jpg" alt="">
+            <img src="./assets/IG.jpg" alt="">
+            <img src="./assets/twitter.jpg" alt="">
+        </div>
+    </footer>
+    <!-- Script -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/compra.js"></script>
+</body>
+
+</html>

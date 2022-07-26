@@ -11,19 +11,24 @@
     .container-toast{
         grid-area: containerToast;
         position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
+        bottom: 1.5px;
+        right: 1.5px;
         z-index: 1031;
         .separator-hide{
             padding: .8rem;
             opacity: 1;
-            min-width: 20rem;
-            min-width: 22rem;
+            min-width: 20px;
             max-height: 142.17px;
             font-size: 1rem;
             color: #21232a;
             margin-bottom: 1rem;
             background-color: green;
+            font-weight: bold;
+            transform: translateX(0px);
+            transition: .5s ease-in-out;
+        }
+        .hide-separator{ 
+            transform: translateX(600px);
         }
     }
     .main-section-1{
@@ -91,13 +96,13 @@
     .main-section-3{
         display: block;
         top: 15px;
-        right: 15px;
+        left: 0px;
         position: fixed;
-        background-color: rgb(0, 71, 85);
+        background-color: rgba(0, 71, 85, 0.5);
         padding: 20px;
-        min-height: 98vh;
-        max-height: 98vh;
-        transform: translate(15px, -15px);
+        min-height: 70vh;
+        max-height: 70vh;
+        transform: translate(0vw, -15px);
         transition: .5s ease-in-out;
         overflow: scroll;
         color: white;
@@ -109,6 +114,13 @@
                 border-radius: 100px;
                 background-color: gray;
                 width: 50px;
+            }
+            .boton_de_eliminar{
+                border: none;
+                background-color: red;
+                color: white;
+                padding: 5px;
+                border-radius: 10px;
             }
         }
         li{
@@ -161,71 +173,5 @@
         color: white;
         border-radius: 5px;
         margin-bottom: 10px;
-    }
-    #main-section-4{
-        grid-area: mainSec4;
-        display: grid;
-        grid-template-areas:
-        "productos"
-        "cantidad"
-        "precioFinal" ;
-        height: auto;
-        div{
-            grid-area: productos;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            span{
-                display: none;
-            }
-            .nodisplay{
-                display: none;
-            }
-            img{
-                width: 50px;
-            }
-        }
-        p:last-of-type{
-            grid-area: cantidad;
-        }
-        .endPrice{
-            grid-area: precioFinal;
-        }
-        .buy{
-            display: none;
-        }
-        #form{
-            background-color: rgb(104, 103, 103);
-            div{
-                margin: 20px 0;
-                margin-left: 5px;
-                margin-right: 5px;
-                input{
-                    text-align: center;
-                    background-color: rgb(181, 125, 125);
-                    border: none;
-                    color: white;
-                    font-weight: bold;
-                    outline: none;
-                    border-radius: 5px;
-                    transition: .5s;
-                    &:hover{
-                        border-bottom: .1px solid rgb(0, 25, 74);
-                    }
-                }
-                &:nth-of-type(3){
-                    justify-content: center;
-                }
-                &:last-of-type{
-                    justify-content: center;
-                    input{
-                        padding: 2px;
-                    }
-                }
-            }
-            .mail{
-                justify-content: center;
-            }
-        }
     }
 }

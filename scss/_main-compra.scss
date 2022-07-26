@@ -1,0 +1,111 @@
+.mainCompra{
+    display: grid;
+    grid-template-areas: "products form";
+    #onlyMain{
+        grid-area: products;
+        margin-left: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        div{
+            margin: 5px 10px;
+            text-align: center;
+            img{
+                max-width: 100px;
+            }
+            p{
+                font-weight: bold;
+            }
+        }
+        .total-cantidad{
+            background-color: green;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            p{
+                &:first-of-type{
+                    border-top: .1px solid black;
+                    border-bottom: .1px solid black;
+                    padding-bottom: 15px;
+                }
+            }
+        }
+    }
+    #sectionBuy{
+        grid-area: form;
+        form{
+            div{
+                display: flex;
+                justify-content: center;
+                &:first-of-type{
+                    flex-wrap: wrap;
+                    input{
+                        margin: 10px auto;
+                        width: 90%;
+                        max-width: 300px;
+                    }
+                }
+                input{
+                    text-align: center;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    background-color: rgba(242, 248, 192,0.5);
+                    padding: 5px;
+                    margin: 20px 0;
+                    width: 95%;
+
+                    border: .1px solid black;
+                    transition: .3s ease-in-out;
+                    &:focus{
+                        border: none;
+                        border-bottom: .1px solid black;
+                        padding-left: 5px;
+                    }
+                }
+            }
+
+            #acceptButton{
+                button{
+                    background-color: rgba($color: green, $alpha: 0.7);
+                    font-weight: bold;
+                    font-size: 20px;
+                    transition: .5s ease-in-out;
+                    border: none;
+                    width: 80%;
+                    margin: 5px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: .1px solid black;
+                }
+            }
+            select{
+                width: 90%;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 15ch;
+                max-width: 30ch;
+                border: 1px solid black;
+                border-radius: 0.25em;
+                padding: 0.25em 0.5em;
+                font-size: 1.25rem;
+                cursor: pointer;
+                line-height: 1.1;
+                background-color: #fff;
+                background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+                justify-content: center;
+                outline: none;
+                option{
+                    min-width: 15ch;
+                    max-width: 30ch;
+                }
+            }
+        }
+    }
+}
+@media(max-width:768px){
+    .mainCompra{
+        grid-template-areas: "form form"
+        "products products";
+    }
+}

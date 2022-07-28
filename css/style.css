@@ -58,7 +58,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    margin-left: 25px;
+    margin-right: 25px; }
     .index-main .main-section-1 .blocked {
       transition: 20s;
       display: none; }
@@ -68,11 +70,14 @@
       .index-main .main-section-1 form div {
         padding: 0 auto; }
         .index-main .main-section-1 form div button {
+          display: flex;
           border: 0;
           background-color: green;
           color: white;
           width: 50%;
-          border-radius: 10px; }
+          border-radius: 10px;
+          margin: 0 auto;
+          justify-content: center; }
   .index-main #main-section-2 {
     grid-area: sect2;
     display: flex;

@@ -1,4 +1,8 @@
 if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
+    fetch('./scripts/data.json').then(el => el.json()).then(el => {
+        componentsPC = el;
+        toRender(componentsPC);
+    });
     let inputSearch = document.getElementById('inputSearch');
     let search = document.getElementById('search');
     let searchS = "";
@@ -7,14 +11,14 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         searchS = e.target.value;
         searchS = searchS.toUpperCase();
         const valueDefault = () => {
-            filter = componentesPC.filter(el => el.nameS.includes(searchS) || el.brand.includes(searchS));
+            filter = componentsPC.filter(el => el.nameS.includes(searchS) || el.brand.includes(searchS));
             if (e.key == "Enter") {
                 e.preventDefault();
                 toRender(filter);
             }
         }
         const valueDifDefault = () => {
-            filter = componentesPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
+            filter = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
             if (e.key == "Enter") {
                 e.preventDefault();
                 toRender(filter);
@@ -34,33 +38,33 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     let valueMaximum = document.getElementById('valueMaximum'); //valores por defecto
     valueMinimum.value = minimumN;
     valueMaximum.value = maximumN;
-    valueMinimum.innerHTML = `$${valueMinimum.value}`;
-    valueMaximum.innerHTML = `$${valueMaximum.value}`;
+    valueMinimum.innerHTML = `u$d${valueMinimum.value}`;
+    valueMaximum.innerHTML = `u$d${valueMaximum.value}`;
     minimum.addEventListener('input', (e) => {
         minimumN = e.target.value;
         valueMinimum.value = minimumN;
-        valueMinimum.innerHTML = `$${valueMinimum.value}`;
+        valueMinimum.innerHTML = `u$d${valueMinimum.value}`;
         minimumN = parseInt(minimumN);
     });
     maximum.addEventListener('input', (e) => {
         maximumN = e.target.value;
         valueMaximum.value = maximumN
-        valueMaximum.innerHTML = `$${valueMaximum.value}`;
+        valueMaximum.innerHTML = `u$d${valueMaximum.value}`;
         maximumN = parseInt(maximumN);
     }) //El minimum y el maximum estipulan los rangos
     let importT = document.getElementById('import');
     importT.addEventListener('click', (e) => {
         e.preventDefault();
         if (eventA == "todas" || eventA == "" && searchS == eventA) {
-            let filterPrice = componentesPC.filter(el => el.price > minimumN && el.price < maximumN);
+            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN);
             toRender(filterPrice);
         } //Si searchS y eventA son iguales, entonces que filtre exclusivamente por precio...
         else if (eventA != searchS) {
-            let filterPrice = componentesPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
+            let filterPrice = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
             toRender(filterPrice);
         } //...Si no, por nombre de componentes
         else {
-            let filterPrice = componentesPC.filter(el => el.price > minimumN && el.price < maximumN && el.brand.includes(eventA));
+            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN && el.brand.includes(eventA));
             toRender(filterPrice);
         } //y si no, que busque según la marca 
     })
@@ -75,10 +79,6 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     })
     let form = document.getElementById('formCategory')
     const mainSection2 = document.querySelector("#main-section-2");
-    fetch('./scripts/data.json').then(el => el.json()).then(el => {
-        componentesPC = el;
-        toRender(componentesPC);
-    });
     const toRender = (products) => {
         let content = "";
         for (const element of products) {
@@ -138,7 +138,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 <span class="borderDel">u$d<span>${productsCart.price * productsCart.cantity}</span></span>
                 <p>Cantidad: ${productsCart.cantity}</p>
                 <p class = "nodisplay">brand${productsCart.brand}</p>
-                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">ELIMINAR TODO</button>
+                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">ELIMINAR TODO EL PRODUCTO</button>
                 <button id = "btn${productsCart.id}" data-ids="${productsCart.id}" class="boton_de_eliminar">ELIMINAR UNO</button>
                 <button id = "btnAdd${productsCart.id}" data-ida="${productsCart.id}" class="boton_de_agregar">AGREGAR UNO</button>
             </div>`;
@@ -149,7 +149,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         reSearch();
         let separador = document.createElement('div');
         separador.innerHTML = `
-        <p>Precio Total: $${entireZ}</p>
+        <p>Precio Total: u$d${entireZ}</p>
         <p>Cantidad Total: ${cantityEntireZ}</p>
         <li><a href="./compra.html" id = "comprarTodo">Comprar todo</a></li>`;
         mainSection3.append(separador);
@@ -164,8 +164,8 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 item.cantity++;
         }});
         showCart(cart);
-    }
-    const delOnce = (id) =>{
+    } //Esto agrega un producto cada vez que se ejecuta
+    const delOne = (id) =>{
         cart.find(item => {
             if (item.id == id){
                 item.cantity--;
@@ -174,8 +174,13 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 }
             }
         })
-        showCart(cart);
+        showCart(cart); //Esto elimina un producto cada que se ejecuta
     }
+    const delProduct = (id) => {
+        let encontrarIndex = cart.findIndex(item => item.id == id);
+        cart.splice(encontrarIndex, 1);
+        showCart(cart);
+    } //Esto elimina el producto correspondiente DE FORMA DIRECTA
     mainSection3.addEventListener('click', (e) => {
         if (e.target !== document.getElementById('main-section-3') && e.target !== document.getElementById('comprarTodo')) {
             if (e.target.dataset.id) {
@@ -197,7 +202,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 entireZ -= searchProperties[0].price;
                 cantityEntireZ--;
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
-                delOnce(e.target.dataset.ids);
+                delOne(e.target.dataset.ids);
             }
         }
     }) //Si el e.target es distinto de cualquier otro lado del mainSection3 que no sean los productos, no arroja error.
@@ -206,13 +211,8 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             e.target.value == "buy" ? buyS(e) : null;
         })
     } //Esto genera que se reproduzca el buyS cada que se compra un nuevo producto
-    const delProduct = (id) => {
-        let encontrarIndex = cart.findIndex(item => item.id == id);
-        cart.splice(encontrarIndex, 1);
-        showCart(cart);
-    } //Esto elimina el producto correspondiente
     let eventA = "";
-    toRender(componentesPC);
+    toRender(componentsPC);
     buying(mainSection2); //Parámetros por defecto
     const btnSelect = document.getElementById('boton');
     form.addEventListener('click', (event) => {
@@ -223,11 +223,11 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             event.target.value == "todas" ? brandTodas() : otherBrand(event);
         });
     }) //Filtrado por input
-    const brandTodas = () => {
-        toRender(componentesPC);
+    const brandAll = () => {
+        toRender(componentsPC);
     }
     const otherBrand = e => {
-        let filterList = componentesPC.filter(el => el.brand == e.target.value);
+        let filterList = componentsPC.filter(el => el.brand == e.target.value);
         toRender(filterList);
     }
     shopping.innerHTML = `${cantityEntireZ}`; //Esto lo inicio al final del código porque cuando recargamos la página es necesario que muestre los productos de la última vez.

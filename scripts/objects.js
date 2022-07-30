@@ -1,4 +1,4 @@
-let componentesPC = [];
+let componentsPC = [];
 class Product {
     constructor(id, nameS, price, brand, url, cantity) {
         this.id = id;

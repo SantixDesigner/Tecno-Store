@@ -132,6 +132,12 @@
       color: white;
       padding: 5px;
       border-radius: 10px; }
+    .index-main .main-section-3 div .boton_de_agregar {
+      border: none;
+      background-color: green;
+      color: white;
+      padding: 5px;
+      border-radius: 10px; }
     .index-main .main-section-3 li {
       list-style: none; }
       .index-main .main-section-3 li a {

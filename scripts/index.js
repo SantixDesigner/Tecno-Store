@@ -188,7 +188,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             if (e.target.dataset.ida) {
                 let searchProperties = cart.filter(el => el.id == e.target.dataset.ida);
                 entireZ += searchProperties[0].price;
-                cantityEntireZ--;
+                cantityEntireZ++;
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
                 addProduct(e.target.dataset.ida);
             }

@@ -1,4 +1,4 @@
-if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('username') != "")) && (sessionStorage.getItem('password') != null) && (sessionStorage.getItem('password') != "")) {
+if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     let inputSearch = document.getElementById('inputSearch');
     let search = document.getElementById('search');
     let searchS = "";
@@ -6,19 +6,21 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     inputSearch.addEventListener('input', (e) => { //Utiliza el buscador para filtrar elementos
         searchS = e.target.value;
         searchS = searchS.toUpperCase();
-        if (minimumN == 0 && maximumN == 100000) {
+        const valueDefault = () => {
             filter = componentesPC.filter(el => el.nameS.includes(searchS) || el.brand.includes(searchS));
             if (e.key == "Enter") {
                 e.preventDefault();
                 toRender(filter);
             }
-        } else if (minimumN != 0 || maximumN != 100000) { //Si no es el rango estipulado, entonces busca segun este
+        }
+        const valueDifDefault = () => {
             filter = componentesPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
             if (e.key == "Enter") {
                 e.preventDefault();
                 toRender(filter);
             }
         }
+        minimumN == 0 && maximumN == 100000 ? valueDefault() : valueDifDefault();
     });
     search.addEventListener('click', (e) => {
         e.preventDefault();
@@ -39,7 +41,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         valueMinimum.value = minimumN;
         valueMinimum.innerHTML = `$${valueMinimum.value}`;
         minimumN = parseInt(minimumN);
-    }); 
+    });
     maximum.addEventListener('input', (e) => {
         maximumN = e.target.value;
         valueMaximum.value = maximumN
@@ -73,18 +75,22 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     })
     let form = document.getElementById('formCategory')
     const mainSection2 = document.querySelector("#main-section-2");
+    fetch('./scripts/data.json').then(el => el.json()).then(el => {
+        componentesPC = el;
+        toRender(componentesPC);
+    });
     const toRender = (products) => {
         let content = "";
         for (const element of products) {
             content +=
-            `<div>
+                `<div>
                 <img src="${element.link}">
                 <h2>${element.nameS}</h2>
                 <span>Precio: </span>
                 <span class="borderDel">u$d<span>${element.price}</span></span>
                 <p class = "nodisplay">brand${element.brand}</p>
-                <button class="buy" value="buy" data-id="${element.id}" data-name="${element.nameS}" data-price="${element.price}" data-link="${element.link}" data-brand="${element.brand}" data-cantity="${element.cantity}">Comprar</button>
-            </div>`;
+                <button class="buy" value="buy" data-id="${element.id}" data-name="${element.nameS.replaceAll(" ", "_")}" data-price="${element.price}" data-link="${element.link}" data-brand="${element.brand}" data-cantity="${element.cantity}">Comprar</button>
+            </div>`; //El replaceAll con el fin de evitar errores
         } //Genera el render por defecto de los productos
         mainSection2.innerHTML = content;
     }
@@ -98,7 +104,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         div.className = "separator-hide";
         setTimeout(() => {
             div.innerHTML = `<h2>Compra con éxito</h2>
-            <p>Compraste ${e.target.dataset.name}</p>`;
+            <p>Compraste ${e.target.dataset.name.replaceAll("_", " ")}</p>`;
             toastContainer.append(div);
             setTimeout(() => {
                 div.classList.add("hide-separator");
@@ -127,12 +133,14 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
             let content = `
             <div>
                 <img src="${productsCart.link}">
-                <h2>${productsCart.nameS}</h2>
+                <h2>${productsCart.nameS.replaceAll("_", " ")}</h2>
                 <span>Precio: </span>
                 <span class="borderDel">u$d<span>${productsCart.price * productsCart.cantity}</span></span>
                 <p>Cantidad: ${productsCart.cantity}</p>
                 <p class = "nodisplay">brand${productsCart.brand}</p>
-                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">ELIMINAR</button>
+                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">ELIMINAR TODO</button>
+                <button id = "btn${productsCart.id}" data-ids="${productsCart.id}" class="boton_de_eliminar">ELIMINAR UNO</button>
+                <button id = "btnAdd${productsCart.id}" data-ida="${productsCart.id}" class="boton_de_agregar">AGREGAR UNO</button>
             </div>`;
             mainSectionHTML += content;
         } //Muestra los componentes, agregándolos al mainSectionHTML
@@ -150,13 +158,47 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
         cart = JSON.parse(localStorage.getItem("cart"));
         showCart(cart);
     } //Si el localStorage no está vacío, entonces el cart es el equivalente al localStorage
+    const addProduct = (id) =>{
+        cart.find(item => {
+            if(item.id == id){
+                item.cantity++;
+        }});
+        showCart(cart);
+    }
+    const delOnce = (id) =>{
+        cart.find(item => {
+            if (item.id == id){
+                item.cantity--;
+                if (item.cantity < 1){
+                    delProduct(id);
+                }
+            }
+        })
+        showCart(cart);
+    }
     mainSection3.addEventListener('click', (e) => {
         if (e.target !== document.getElementById('main-section-3') && e.target !== document.getElementById('comprarTodo')) {
-            let searchProperties = cart.filter(el => el.id == e.target.dataset.id);
-            entireZ -= searchProperties[0].price * searchProperties[0].cantity;
-            cantityEntireZ -= searchProperties[0].cantity;
-            shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
-            delProduct(e.target.dataset.id);
+            if (e.target.dataset.id) {
+                let searchProperties = cart.filter(el => el.id == e.target.dataset.id);
+                entireZ -= searchProperties[0].price * searchProperties[0].cantity;
+                cantityEntireZ -= searchProperties[0].cantity;
+                shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
+                delProduct(e.target.dataset.id);
+            }
+            if (e.target.dataset.ida) {
+                let searchProperties = cart.filter(el => el.id == e.target.dataset.ida);
+                entireZ += searchProperties[0].price;
+                cantityEntireZ--;
+                shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
+                addProduct(e.target.dataset.ida);
+            }
+            if (e.target.dataset.ids){
+                let searchProperties = cart.filter(el => el.id == e.target.dataset.ids);
+                entireZ -= searchProperties[0].price;
+                cantityEntireZ--;
+                shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
+                delOnce(e.target.dataset.ids);
+            }
         }
     }) //Si el e.target es distinto de cualquier otro lado del mainSection3 que no sean los productos, no arroja error.
     const buying = (mainSection2) => {
@@ -183,7 +225,7 @@ if (((sessionStorage.getItem('username') != null) && (sessionStorage.getItem('us
     }) //Filtrado por input
     const brandTodas = () => {
         toRender(componentesPC);
-    } 
+    }
     const otherBrand = e => {
         let filterList = componentesPC.filter(el => el.brand == e.target.value);
         toRender(filterList);

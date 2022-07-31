@@ -1,35 +1,40 @@
-.nav{
-    .nav-div{
-            ul{
-                text-align: center;
-                margin-left: auto;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                li{
-                    .shopping{
-                        font-size: 2rem;
-                        cursor: pointer;
-                        transition: 50s ease-in-out;
-                    }
-                    .hideshopping{
-                        transform: translateX(-1000000px);
-                    }
-                    .carrito{
-                        cursor: pointer;
-                    }
-                    a{
-                        color: black;
-                        transition: .3s;
-                        background-image: radial-gradient(currentColor, currentColor);
-                        background-position: 50% 100%;
-                        background-size: 0% 0%, 2.5px;
-                        &:hover{
-                            color: green;
-                            background-size: 100% 2px;
-                        }
+.nav {
+    .nav-div {
+        ul {
+            text-align: center;
+            margin-left: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            li {
+                .shopping {
+                    font-size: 2rem;
+                    cursor: pointer;
+                    transition: 50s ease-in-out;
+                }
+
+                .hideshopping {
+                    transform: translateX(-1000000px);
+                }
+
+                .carrito {
+                    cursor: pointer;
+                }
+
+                a {
+                    color: black;
+                    transition: .3s;
+                    background-image: radial-gradient(currentColor, currentColor);
+                    background-position: 50% 100%;
+                    background-size: 0% 0%, 2.5px;
+
+                    &:hover {
+                        color: green;
+                        background-size: 100% 2px;
                     }
                 }
+            }
         }
     }
 }

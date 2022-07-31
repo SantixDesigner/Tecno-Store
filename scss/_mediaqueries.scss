@@ -1,81 +1,94 @@
-.header{
+.header {
     grid-area: header;
 }
-.nav{
+
+.nav {
     grid-area: nav;
 }
-.index-main{
+
+.index-main {
     grid-area: main-index;
 }
-.footer{
+
+.footer {
     grid-area: footer;
 }
-.grid-index{
+
+.grid-index {
     display: grid;
-    grid-template-areas: 
-    "header header nav"
-    "main-index main-index main-index"
-    "footer footer footer";
+    grid-template-areas:
+        "header header nav"
+        "main-index main-index main-index"
+        "footer footer footer";
 }
-@media(max-width:1001px){
-    .grid-index{
-        grid-template-areas: 
-        "header header"
-        "main-index main-index"
-        "nav nav"
-        "footer footer";
+
+@media(max-width:1001px) {
+    .grid-index {
+        grid-template-areas:
+            "header header"
+            "main-index main-index"
+            "nav nav"
+            "footer footer";
     }
-    .index-main{
-        grid-template-areas: 
-        "products1 products1"
-        "sect1 sect1"
-        "products2 products2"
-        "sect2 sect2"
-        "main3 main3"
-        "mainSec4 mainSec4"
-        "button button";
+
+    .index-main {
+        grid-template-areas:
+            "products1 products1"
+            "sect1 sect1"
+            "products2 products2"
+            "sect2 sect2"
+            "main3 main3"
+            "mainSec4 mainSec4"
+            "button button";
     }
-    .main-section-1{
-        form{
-            div{
+
+    .main-section-1 {
+        form {
+            div {
                 padding: 2px;
                 border: .1px solid black;
-                margin:10px;
+                margin: 10px;
             }
         }
-        .blocked{
+
+        .blocked {
             display: none;
         }
     }
-    .nav{
+
+    .nav {
         position: fixed;
         bottom: 0;
         min-height: 50px;
         width: 100%;
-            div{
-                transition: .3s;
-                height: 50px;
-                ul{
-                    display: flex;
-                    flex-direction: row;
-                    width: 100%;
-                    justify-content: space-around;
-                    flex-wrap: wrap;
-                    li{
-                        i{
-                            margin-top: 10px;
-                            font-size: 2rem;
-                        }
+
+        div {
+            transition: .3s;
+            height: 50px;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+
+                li {
+                    i {
+                        margin-top: 10px;
+                        font-size: 2rem;
                     }
+                }
             }
+        }
     }
 }
-}
-@media (max-width:437px){
-    #main-section-4{
-        form{
-            #div1{
-                input{
+
+@media (max-width:437px) {
+    #main-section-4 {
+        form {
+            #div1 {
+                input {
                     margin-top: 4px;
                     margin-left: auto;
                     margin-right: auto;

@@ -1,6 +1,6 @@
 let cart = JSON.parse(localStorage.getItem("cart"));
 console.log(cart);
-if (cart == null){
+if (cart == null) {
     window.location.replace('./inicios.html');
 }
 let buyZ = document.getElementById('onlyMain');
@@ -11,7 +11,7 @@ for (const cartS of cart) {
     content += `
     <div>
         <img src="${cartS.link}">
-        <p>${cartS.nameS.replaceAll("_"," ")}</p>
+        <p>${cartS.nameS.replaceAll("_", " ")}</p>
         <p>u$d${cartS.price * cartS.cantity}</p>
     </div>
     `
@@ -26,8 +26,8 @@ total.innerHTML = `
 buyZ.innerHTML = content;
 buyZ.append(total);
 let installments = document.querySelectorAll('.installments');
-for (let i = 0; i<installments.length; i++){
-    installments[i].innerHTML = `Paga en ${installments[i].value} cuotas de u$d${Math.round((endPrice/parseInt(installments[i].value))*1.21)}`;
+for (let i = 0; i < installments.length; i++) {
+    installments[i].innerHTML = `Paga en ${installments[i].value} cuotas de u$d${Math.round((endPrice / parseInt(installments[i].value)) * 1.21)}`;
 }
 let namePerson = document.getElementById('namePerson');
 let surname = document.getElementById('surnamePerson');
@@ -59,7 +59,7 @@ buyZr.addEventListener('click', (e) => {
             icon: "success",
             title: "La compra se hizo con éxito",
             text: "Has comprado " + cantity + " productos con éxito",
-            text: `Se pagará en ${installmen.value} sin interés de u$d${Math.round((endPrice/installmen.value)*1.21)}`,
+            text: `Se pagará en ${installmen.value} sin interés de u$d${Math.round((endPrice / installmen.value) * 1.21)}`,
             footer: `Le enviaremos los productos a la persona ${nameX} ${surnameX} en los próximos minutos a ${dirX}, con información a ${mailX}`,
         })
         localStorage.removeItem("cart");

@@ -96,15 +96,13 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     }
     let mainSection3 = document.getElementById('main-section-3');
     let cart = [];
-    const buyS = (e) => {
-        let product = new Product(e.target.dataset.id, e.target.dataset.name, e.target.dataset.price, e.target.dataset.brand, e.target.dataset.link, e.target.dataset.cantity);
-        shopping.innerHTML = `${(cantityEntireZ + 1)}`;
+    const messageBuy = (product) => {
         let toastContainer = document.getElementById('container-toast');
         let div = document.createElement('div');
         div.className = "separator-hide";
         setTimeout(() => {
             div.innerHTML = `<h2>Compra con éxito</h2>
-            <p>Compraste ${e.target.dataset.name.replaceAll("_", " ")}</p>`;
+            <p>Agregaste un ${product.replaceAll("_", " ")} al carro de compras</p>`;
             toastContainer.append(div);
             setTimeout(() => {
                 div.classList.add("hide-separator");
@@ -113,8 +111,13 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 }, 2000)
             }, 1500)
         }, 0)
-        let encontrado = cart.findIndex(el => el.id == e.target.dataset.id);
-        encontrado == -1 ? cart.push(product) : cart[encontrado].cantity++; //El index es igual a -1? Si es así, entonces pushea el producto al cart, si no, suma su cantidad en 1
+    }
+    const buyS = (e) => {
+        let product = new Product(e.target.dataset.id, e.target.dataset.name, e.target.dataset.price, e.target.dataset.brand, e.target.dataset.link, e.target.dataset.cantity);
+        shopping.innerHTML = `${(cantityEntireZ + 1)}`;
+        let found = cart.findIndex(el => el.id == e.target.dataset.id);
+        found == -1 ? cart.push(product) : cart[found].cantity++; //El index es igual a -1? Si es así, entonces pushea el producto al cart, si no, suma su cantidad en 1
+        messageBuy(e.target.dataset.name);
         showCart(cart);
     } //Esto se reproduce cada vez que compramos un producto
     let entireZ = 0;
@@ -138,38 +141,67 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 <span class="borderDel">u$d<span>${productsCart.price * productsCart.cantity}</span></span>
                 <p>Cantidad: ${productsCart.cantity}</p>
                 <p class = "nodisplay">brand${productsCart.brand}</p>
-                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">ELIMINAR TODO EL PRODUCTO</button>
-                <button id = "btn${productsCart.id}" data-ids="${productsCart.id}" class="boton_de_eliminar">ELIMINAR UNO</button>
-                <button id = "btnAdd${productsCart.id}" data-ida="${productsCart.id}" class="boton_de_agregar">AGREGAR UNO</button>
+                <button id = "btn${productsCart.id}" data-id="${productsCart.id}" class="boton_de_eliminar">--</button>
+                <button id = "btn${productsCart.id}" data-ids="${productsCart.id}" class="boton_de_eliminar">-</button>
+                <button id = "btnAdd${productsCart.id}" data-ida="${productsCart.id}" class="boton_de_agregar">+</button>
             </div>`;
             mainSectionHTML += content;
         } //Muestra los componentes, agregándolos al mainSectionHTML
         localStorage.setItem("cart", JSON.stringify(cart));
         mainSection3.innerHTML = mainSectionHTML;
         reSearch();
-        let separador = document.createElement('div');
-        separador.innerHTML = `
+        let separator = document.createElement('div');
+        separator.innerHTML = `
         <p>Precio Total: u$d${entireZ}</p>
         <p>Cantidad Total: ${cantityEntireZ}</p>
         <li><a href="./compra.html" id = "comprarTodo">Comprar todo</a></li>`;
-        mainSection3.append(separador);
+        mainSection3.append(separator);
     } //Agrega el precio, la cantidad total y un boton para comprar todo
     if (localStorage.getItem("cart")) {
         cart = JSON.parse(localStorage.getItem("cart"));
         showCart(cart);
     } //Si el localStorage no está vacío, entonces el cart es el equivalente al localStorage
-    const addProduct = (id) =>{
+    const removeProduct = (product) => {
+        let toastContainer = document.getElementById('container-toast');
+        let div = document.createElement('div');
+        div.classList.add('separator-hide', 'red');
+        setTimeout(() => {
+            div.innerHTML = `<h2>Eliminaste con éxito</h2>
+            <p>Eliminaste uno o varios de ${product.replaceAll("_", " ")}</p>`;
+            toastContainer.append(div);
+            setTimeout(() => {
+                div.classList.add("hide-separator");
+                setTimeout(() => {
+                    div.remove();
+                }, 2000)
+            }, 1500)
+        }, 0)
+    }
+    const addProduct = (id) => {
         cart.find(item => {
-            if(item.id == id){
+            if (item.id == id) {
                 item.cantity++;
-        }});
+            }
+        });
+        let findProduct = cart.find(item => {
+            if (item.id == id) {
+                return item;
+            }
+        })
+        messageBuy(findProduct.nameS);
         showCart(cart);
     } //Esto agrega un producto cada vez que se ejecuta
-    const delOne = (id) =>{
-        cart.find(item => {
-            if (item.id == id){
+    const delOne = (id) => {
+        let findProduct = cart.find(item => {
+            if (item.id == id) {
+                return item.nameS;
+            }
+        })
+        removeProduct(findProduct.nameS);
+        cart.filter(item => {
+            if (item.id == id) {
                 item.cantity--;
-                if (item.cantity < 1){
+                if (item.cantity < 1) {
                     delProduct(id);
                 }
             }
@@ -177,9 +209,16 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         showCart(cart); //Esto elimina un producto cada que se ejecuta
     }
     const delProduct = (id) => {
-        let encontrarIndex = cart.findIndex(item => item.id == id);
-        cart.splice(encontrarIndex, 1);
+        let product = cart.find(el => {
+            if (el.id == id) {
+                return el.nameS;
+            }
+        });
+        product = product.nameS;
+        let findIndex = cart.findIndex(item => item.id == id);
+        cart.splice(findIndex, 1);
         showCart(cart);
+        removeProduct(product);
     } //Esto elimina el producto correspondiente DE FORMA DIRECTA
     mainSection3.addEventListener('click', (e) => {
         if (e.target !== document.getElementById('main-section-3') && e.target !== document.getElementById('comprarTodo')) {
@@ -197,7 +236,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
                 addProduct(e.target.dataset.ida);
             }
-            if (e.target.dataset.ids){
+            if (e.target.dataset.ids) {
                 let searchProperties = cart.filter(el => el.id == e.target.dataset.ids);
                 entireZ -= searchProperties[0].price;
                 cantityEntireZ--;
@@ -212,7 +251,6 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         })
     } //Esto genera que se reproduzca el buyS cada que se compra un nuevo producto
     let eventA = "";
-    toRender(componentsPC);
     buying(mainSection2); //Parámetros por defecto
     const btnSelect = document.getElementById('boton');
     form.addEventListener('click', (event) => {

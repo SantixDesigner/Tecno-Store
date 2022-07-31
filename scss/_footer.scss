@@ -1,16 +1,20 @@
-.footer{
+.footer {
     display: flex;
-    .copyright{
+
+    .copyright {
         width: 100%;
         text-align: center;
-        h3{
+
+        h3 {
             font-size: 15px;
         }
     }
-    .footer-redes{
+
+    .footer-redes {
         margin-left: auto;
         display: flex;
-        img{
+
+        img {
             width: 25px;
             height: 25px;
             border-radius: 30%;

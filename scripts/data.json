@@ -1,68 +1,530 @@
 [
-    { "id": 1, "nameS": "I5 9400F", "price": 2500, "brand": "INTEL", "link": "./assets/i5-9400F.jpg", "cantity": 1 },
-    { "id": 2, "nameS": "RYZEN 7 3700X", "price": 6500, "brand": "AMD", "link": "./assets/Ryzen7.jpeg", "cantity": 1 },
-    { "id": 3, "nameS": "I7 7700K", "price": 3000, "brand": "INTEL", "link": "./assets/i7-7700K.jpg", "cantity": 1 },
-    { "id": 4, "nameS": "RYZEN 3 1200", "price": 1100, "brand": "AMD", "link": "./assets/ryzenej.jpg", "cantity": 1 },
-    { "id": 5, "nameS": "I9 9900KF", "price": 5000, "brand": "INTEL", "link": "./assets/i9-9900KF.jpg", "cantity": 1 },
-    { "id": 6, "nameS": "RYZEN 5 2400G", "price": 1800, "brand": "AMD", "link": "./assets/Ryzen5.jpeg", "cantity": 1 },
-    { "id": 7, "nameS": "I5 10600K", "price": 7635, "brand": "INTEL", "link": "./assets/i5-10400f.jpg", "cantity": 1 },
-    { "id": 8, "nameS": "RYZEN 3 2200G", "price": 1350, "brand": "AMD", "link": "./assets/ryzenej.jpg", "cantity": 1 },
-    { "id": 9, "nameS": "I7 12700KF", "price": 10000, "brand": "INTEL", "link": "./assets/i7-12700K.jpg", "cantity": 1 },
-    { "id": 10, "nameS": "RYZEN 9 3900X", "price": 9000, "brand": "AMD", "link": "./assets/Ryzen9.jpg", "cantity": 1 },
-    { "id": 11, "nameS": "I9 12900K", "price": 30000, "brand": "INTEL", "link": "./assets/i9-12900.jpeg", "cantity": 1 },
-    { "id": 12, "nameS": "RYZEN 5 3600", "price": 2500, "brand": "AMD", "link": "./assets/Ryzen5.jpeg", "cantity": 1 },
-    { "id": 13, "nameS": "RYZEN 5 5600X", "price": 8000, "brand": "AMD", "link": "./assets/Ryzen5.jpeg", "cantity": 1 },
-    { "id": 14, "nameS": "I5 12400F", "price": 9000, "brand": "INTEL", "link": "./assets/i5-12400F.jpeg", "cantity": 1 },
-    { "id": 15, "nameS": "I3 9100F", "price": 2000, "brand": "INTEL", "link": "./assets/i3-9100f.jpeg", "cantity": 1 },
-    { "id": 16, "nameS": "RYZEN 9 3990XT", "price": 13370, "brand": "AMD", "link": "./assets/Ryzen9.jpg", "cantity": 1 },
-    { "id": 17, "nameS": "I9 12900F", "price": 18000, "brand": "INTEL", "link": "./assets/i9-12900.jpeg", "cantity": 1 },
-    { "id": 18, "nameS": "FUENTE GENÉRICA 500W", "price": 5000, "brand": "FUENTE", "link": "./assets/500wgen.jpg", "cantity": 1 },
-    { "id": 19, "nameS": "FUENTE EVGA 600W 80 PLUS BRONCE", "price": 7500, "brand": "FUENTE", "link": "./assets/600wevga.png", "cantity": 1 },
-    { "id": 20, "nameS": "FUENTE 750W CORSAIR 80 PLUS", "price": 10000, "brand": "FUENTE", "link": "./assets/750w.jpg", "cantity": 1 },
-    { "id": 21, "nameS": "FUENTE 1000W EVGA 80 PLUS", "price": 12000, "brand": "FUENTE", "link": "./assets/1000wevga.jpg", "cantity": 1 },
-    { "id": 22, "nameS": "MOTHER A320 AM4", "price": 900, "brand": "MOTHER", "link": "./assets/a320.jpg", "cantity": 1 },
-    { "id": 23, "nameS": "MOTHER ASUS B-550 AM4", "price": 1300, "brand": "MOTHER", "link": "./assets/asus-b550.jpg", "cantity": 1 },
-    { "id": 24, "nameS": "GABINETE ASUS", "price": 3700, "brand": "GABINETE", "link": "./assets/asus.jpg", "cantity": 1 },
-    { "id": 25, "nameS": "AURICULAR REDRAGON GAMER", "price": 250, "brand": "PERIFERICO", "link": "./assets/auricular-redragon.jfif", "cantity": 1 },
-    { "id": 26, "nameS": "MOTHER B250 AM4", "price": 1100, "brand": "MOTHER", "link": "./assets/b250.jfif", "cantity": 1 },
-    { "id": 27, "nameS": "DISPLAYPORT CABLE VERIFICADO", "price": 300, "brand": "ADICIONALES", "link": "./assets/displayport.jpg", "cantity": 1 },
-    { "id": 28, "nameS": "CABLE DVI PARA MONITORES ANTIGUOS", "price": 100, "brand": "ADICIONALES", "link": "./assets/dvi.jpg", "cantity": 1 },
-    { "id": 29, "nameS": "CABLE ETHERNET", "price": 25, "brand": "ADICIONALES", "link": "./assets/ethernet.jpg", "cantity": 1 },
-    { "id": 30, "nameS": "H61 6TA GEN INTEL", "price": 650, "brand": "MOTHER", "link": "./assets/h61.png", "cantity": 1 },
-    { "id": 31, "nameS": "H110 7MA GEN INTEL", "price": 800, "brand": "MOTHER", "link": "./assets/h110.jfif", "cantity": 1 },
-    { "id": 32, "nameS": "MOUSE G203 GAMER", "price": 65, "brand": "PERIFERICO", "link": "./assets/g203-mouse.jpg", "cantity": 1 },
-    { "id": 33, "nameS": "RAM HP GAMER", "price": 90, "brand": "RAM", "link": "./assets/hp-ram.jpg", "cantity": 1 },
-    { "id": 34, "nameS": "CABLE HDMI", "price": 20, "brand": "ADICIONALES", "link": "./assets/hdmi.jpg", "cantity": 1 },
-    { "id": 35, "nameS": "GABINETE KEDIERS GAMER ATX", "price": 1500, "brand": "GABINETE", "link": "./assets/kediers-atx.jpg", "cantity": 1 },
-    { "id": 36, "nameS": "KOTION EACH G9000 GAMER AURICULAR", "price": 200, "brand": "PERIFERICO", "link": "./assets/KotionEachg9000.jpg", "cantity": 1 },
-    { "id": 37, "nameS": "MONITOR DELL 27 PULGADAS", "price": 300, "brand": "MONITOR", "link": "./assets/monitor-dell-27p.jpg", "cantity": 1 },
-    { "id": 38, "nameS": "MONITOR 144HZ 1MS GAMER", "price": 1000, "brand": "MONITOR", "link": "./assets/monitor-144hz-1ms.jpeg", "cantity": 1 },
-    { "id": 39, "nameS": "MONITOR LED 60HZ 20 PULGADAS 5MS", "price": 500, "brand": "MONITOR", "link": "./assets/monitor-led-60hz-5ms-lg.jpeg", "cantity": 1 },
-    { "id": 40, "nameS": "MONITOR SAMSUNG CURVO GAMER", "price": 2500, "brand": "MONITOR", "link": "./assets/monitor-samsung-curvo.jfif", "cantity": 1 },
-    { "id": 41, "nameS": "MONITOR 19 PULGADAS SAMSUNG", "price": 120, "brand": "MONITOR", "link": "./assets/monitor-samsung.jpeg", "cantity": 1 },
-    { "id": 42, "nameS": "MOTHER ASUS B460 LGA1200", "price": 235, "brand": "MOTHER", "link": "./assets/mother-asus-b460.png", "cantity": 1 },
-    { "id": 43, "nameS": "TECLADO NKB GAMER", "price": 200, "brand": "PERIFERICO", "link": "./assets/nkb.png", "cantity": 1 },
-    { "id": 44, "nameS": "NOGA STORMER AURICULAR GAMER", "price": 150, "brand": "PERIFERICO", "link": "./assets/noga-stormer.jpg", "cantity": 1 },
-    { "id": 45, "nameS": "MOUSE OPTICO BOCA", "price": 100000, "brand": "PERIFERICO", "link": "./assets/optico-boca.jpg", "cantity": 1 },
-    { "id": 46, "nameS": "PARLANTE HP GAMER", "price": 25, "brand": "PERIFERICO", "link": "./assets/parlante-hp.jpg", "cantity": 1 },
-    { "id": 47, "nameS": "PLACA WIFI MOTHER", "price": 50, "brand": "ADICIONALES", "link": "./assets/placa-wifi.jpg", "cantity": 1 },
-    { "id": 48, "nameS": "COMBO RAZER GAMER TECLADO Y MOUSE", "price": 1150, "brand": "PERIFERICO", "link": "./assets/razer-combo.jpeg", "cantity": 1 },
-    { "id": 49, "nameS": "COMBO REDRAGON GAMER TECLADO Y MOUSE", "price": 850, "brand": "PERIFERICO", "link": "./assets/redragon-combo.jpg", "cantity": 1 },
-    { "id": 50, "nameS": "ROG STRIX GABINETE", "price": 300, "brand": "GABINETE", "link": "./assets/rog-strix.jfif", "cantity": 1 },
-    { "id": 51, "nameS": "ROG SWIFT 360HZ", "price": 5000, "brand": "MONITOR", "link": "./assets/rog-swift-360hz.jpg", "cantity": 1 },
-    { "id": 52, "nameS": "FUENTE 1200W ROG", "price": 7500, "brand": "FUENTE", "link": "./assets/rog1200w.jpg", "cantity": 1 },
-    { "id": 53, "nameS": "RTX 3060TI NVIDIA", "price": 15000, "brand": "PLACA DE VIDEO", "link": "./assets/rtx-3060ti.jpg", "cantity": 1 },
-    { "id": 54, "nameS": "RTX 3080TI NVIDIA", "price": 25000, "brand": "PLACA DE VIDEO", "link": "./assets/rtx-3080ti.jpg", "cantity": 1 },
-    { "id": 55, "nameS": "RTX 2060 NVIDIA", "price": 5000, "brand": "PLACA DE VIDEO", "link": "./assets/rtx2060.jpg", "cantity": 1 },
-    { "id": 56, "nameS": "RTX 2070TI NVIDIA", "price": 7500, "brand": "PLACA DE VIDEO", "link": "./assets/rtx2070ti.jpg", "cantity": 1 },
-    { "id": 57, "nameS": "RADEON RX 6600XT", "price": 3500, "brand": "PLACA DE VIDEO", "link": "./assets/rx-6600xt.jpg", "cantity": 1 },
-    { "id": 58, "nameS": "RADEON RX 6800XT", "price": 7500, "brand": "PLACA DE VIDEO", "link": "./assets/rx-6800xt.jpg", "cantity": 1 },
-    { "id": 59, "nameS": "MOTHER Z490 LGA1200", "price": 500, "brand": "MOTHER", "link": "./assets/z490.png", "cantity": 1 },
-    { "id": 60, "nameS": "MOTHER Z590 LGA1200", "price": 900, "brand": "MOTHER", "link": "./assets/z590.png", "cantity": 1 },
-    { "id": 61, "nameS": "XTRIKE ME MOUSE GAMER", "price": 200, "brand": "PERIFERICO", "link": "./assets/Xtrike-me.jpg", "cantity": 1 },
-    { "id": 62, "nameS": "YINDIAO TECLADO GAMER", "price": 100, "brand": "PERIFERICO", "link": "./assets/yindiao-v4.jfif", "cantity": 1 },
-    { "id": 63, "nameS": "MOTHER X570 AM3", "price": 750, "brand": "MOTHER", "link": "./assets/x570.png", "cantity": 1 },
-    { "id": 64, "nameS": "RAM VENGEANCE", "price": 1000, "brand": "RAM", "link": "./assets/vengeance-ram.jpg", "cantity": 1 },
-    { "id": 65, "nameS": "CABLE VGA", "price": 10, "brand": "ADICIONALES", "link": "./assets/vga.jpg", "cantity": 1 },
-    { "id": 66, "nameS": "THERMALTAKE V200 GABINETE GAMER", "price": 775, "brand": "GABINETE", "link": "./assets/thermaltake-v200.jfif", "cantity": 1 }
+    {
+        "id": 1,
+        "nameS": "I5 9400F",
+        "price": 2500,
+        "brand": "INTEL",
+        "link": "./assets/i5-9400F.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 2,
+        "nameS": "RYZEN 7 3700X",
+        "price": 6500,
+        "brand": "AMD",
+        "link": "./assets/Ryzen7.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 3,
+        "nameS": "I7 7700K",
+        "price": 3000,
+        "brand": "INTEL",
+        "link": "./assets/i7-7700K.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 4,
+        "nameS": "RYZEN 3 1200",
+        "price": 1100,
+        "brand": "AMD",
+        "link": "./assets/ryzenej.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 5,
+        "nameS": "I9 9900KF",
+        "price": 5000,
+        "brand": "INTEL",
+        "link": "./assets/i9-9900KF.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 6,
+        "nameS": "RYZEN 5 2400G",
+        "price": 1800,
+        "brand": "AMD",
+        "link": "./assets/Ryzen5.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 7,
+        "nameS": "I5 10600K",
+        "price": 7635,
+        "brand": "INTEL",
+        "link": "./assets/i5-10400f.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 8,
+        "nameS": "RYZEN 3 2200G",
+        "price": 1350,
+        "brand": "AMD",
+        "link": "./assets/ryzenej.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 9,
+        "nameS": "I7 12700KF",
+        "price": 10000,
+        "brand": "INTEL",
+        "link": "./assets/i7-12700K.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 10,
+        "nameS": "RYZEN 9 3900X",
+        "price": 9000,
+        "brand": "AMD",
+        "link": "./assets/Ryzen9.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 11,
+        "nameS": "I9 12900K",
+        "price": 30000,
+        "brand": "INTEL",
+        "link": "./assets/i9-12900.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 12,
+        "nameS": "RYZEN 5 3600",
+        "price": 2500,
+        "brand": "AMD",
+        "link": "./assets/Ryzen5.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 13,
+        "nameS": "RYZEN 5 5600X",
+        "price": 8000,
+        "brand": "AMD",
+        "link": "./assets/Ryzen5.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 14,
+        "nameS": "I5 12400F",
+        "price": 9000,
+        "brand": "INTEL",
+        "link": "./assets/i5-12400F.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 15,
+        "nameS": "I3 9100F",
+        "price": 2000,
+        "brand": "INTEL",
+        "link": "./assets/i3-9100f.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 16,
+        "nameS": "RYZEN 9 3990XT",
+        "price": 13370,
+        "brand": "AMD",
+        "link": "./assets/Ryzen9.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 17,
+        "nameS": "I9 12900F",
+        "price": 18000,
+        "brand": "INTEL",
+        "link": "./assets/i9-12900.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 18,
+        "nameS": "FUENTE GENÉRICA 500W",
+        "price": 5000,
+        "brand": "FUENTE",
+        "link": "./assets/500wgen.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 19,
+        "nameS": "FUENTE EVGA 600W 80 PLUS BRONCE",
+        "price": 7500,
+        "brand": "FUENTE",
+        "link": "./assets/600wevga.png",
+        "cantity": 1
+    },
+    {
+        "id": 20,
+        "nameS": "FUENTE 750W CORSAIR 80 PLUS",
+        "price": 10000,
+        "brand": "FUENTE",
+        "link": "./assets/750w.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 21,
+        "nameS": "FUENTE 1000W EVGA 80 PLUS",
+        "price": 12000,
+        "brand": "FUENTE",
+        "link": "./assets/1000wevga.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 22,
+        "nameS": "MOTHER A320 AM4",
+        "price": 900,
+        "brand": "MOTHER",
+        "link": "./assets/a320.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 23,
+        "nameS": "MOTHER ASUS B-550 AM4",
+        "price": 1300,
+        "brand": "MOTHER",
+        "link": "./assets/asus-b550.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 24,
+        "nameS": "GABINETE ASUS",
+        "price": 3700,
+        "brand": "GABINETE",
+        "link": "./assets/asus.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 25,
+        "nameS": "AURICULAR REDRAGON GAMER",
+        "price": 250,
+        "brand": "PERIFERICO",
+        "link": "./assets/auricular-redragon.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 26,
+        "nameS": "MOTHER B250 AM4",
+        "price": 1100,
+        "brand": "MOTHER",
+        "link": "./assets/b250.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 27,
+        "nameS": "DISPLAYPORT CABLE VERIFICADO",
+        "price": 300,
+        "brand": "ADICIONALES",
+        "link": "./assets/displayport.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 28,
+        "nameS": "CABLE DVI PARA MONITORES ANTIGUOS",
+        "price": 100,
+        "brand": "ADICIONALES",
+        "link": "./assets/dvi.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 29,
+        "nameS": "CABLE ETHERNET",
+        "price": 25,
+        "brand": "ADICIONALES",
+        "link": "./assets/ethernet.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 30,
+        "nameS": "H61 6TA GEN INTEL",
+        "price": 650,
+        "brand": "MOTHER",
+        "link": "./assets/h61.png",
+        "cantity": 1
+    },
+    {
+        "id": 31,
+        "nameS": "H110 7MA GEN INTEL",
+        "price": 800,
+        "brand": "MOTHER",
+        "link": "./assets/h110.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 32,
+        "nameS": "MOUSE G203 GAMER",
+        "price": 65,
+        "brand": "PERIFERICO",
+        "link": "./assets/g203-mouse.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 33,
+        "nameS": "RAM HP GAMER",
+        "price": 90,
+        "brand": "RAM",
+        "link": "./assets/hp-ram.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 34,
+        "nameS": "CABLE HDMI",
+        "price": 20,
+        "brand": "ADICIONALES",
+        "link": "./assets/hdmi.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 35,
+        "nameS": "GABINETE KEDIERS GAMER ATX",
+        "price": 1500,
+        "brand": "GABINETE",
+        "link": "./assets/kediers-atx.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 36,
+        "nameS": "KOTION EACH G9000 GAMER AURICULAR",
+        "price": 200,
+        "brand": "PERIFERICO",
+        "link": "./assets/KotionEachg9000.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 37,
+        "nameS": "MONITOR DELL 27 PULGADAS",
+        "price": 300,
+        "brand": "MONITOR",
+        "link": "./assets/monitor-dell-27p.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 38,
+        "nameS": "MONITOR 144HZ 1MS GAMER",
+        "price": 1000,
+        "brand": "MONITOR",
+        "link": "./assets/monitor-144hz-1ms.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 39,
+        "nameS": "MONITOR LED 60HZ 20 PULGADAS 5MS",
+        "price": 500,
+        "brand": "MONITOR",
+        "link": "./assets/monitor-led-60hz-5ms-lg.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 40,
+        "nameS": "MONITOR SAMSUNG CURVO GAMER",
+        "price": 2500,
+        "brand": "MONITOR",
+        "link": "./assets/monitor-samsung-curvo.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 41,
+        "nameS": "MONITOR 19 PULGADAS SAMSUNG",
+        "price": 120,
+        "brand": "MONITOR",
+        "link": "./assets/monitor-samsung.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 42,
+        "nameS": "MOTHER ASUS B460 LGA1200",
+        "price": 235,
+        "brand": "MOTHER",
+        "link": "./assets/mother-asus-b460.png",
+        "cantity": 1
+    },
+    {
+        "id": 43,
+        "nameS": "TECLADO NKB GAMER",
+        "price": 200,
+        "brand": "PERIFERICO",
+        "link": "./assets/nkb.png",
+        "cantity": 1
+    },
+    {
+        "id": 44,
+        "nameS": "NOGA STORMER AURICULAR GAMER",
+        "price": 150,
+        "brand": "PERIFERICO",
+        "link": "./assets/noga-stormer.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 45,
+        "nameS": "MOUSE OPTICO BOCA",
+        "price": 100000,
+        "brand": "PERIFERICO",
+        "link": "./assets/optico-boca.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 46,
+        "nameS": "PARLANTE HP GAMER",
+        "price": 25,
+        "brand": "PERIFERICO",
+        "link": "./assets/parlante-hp.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 47,
+        "nameS": "PLACA WIFI MOTHER",
+        "price": 50,
+        "brand": "ADICIONALES",
+        "link": "./assets/placa-wifi.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 48,
+        "nameS": "COMBO RAZER GAMER TECLADO Y MOUSE",
+        "price": 1150,
+        "brand": "PERIFERICO",
+        "link": "./assets/razer-combo.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 49,
+        "nameS": "COMBO REDRAGON GAMER TECLADO Y MOUSE",
+        "price": 850,
+        "brand": "PERIFERICO",
+        "link": "./assets/redragon-combo.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 50,
+        "nameS": "ROG STRIX GABINETE",
+        "price": 300,
+        "brand": "GABINETE",
+        "link": "./assets/rog-strix.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 51,
+        "nameS": "ROG SWIFT 360HZ",
+        "price": 5000,
+        "brand": "MONITOR",
+        "link": "./assets/rog-swift-360hz.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 52,
+        "nameS": "FUENTE 1200W ROG",
+        "price": 7500,
+        "brand": "FUENTE",
+        "link": "./assets/rog1200w.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 53,
+        "nameS": "RTX 3060TI NVIDIA",
+        "price": 15000,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rtx-3060ti.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 54,
+        "nameS": "RTX 3080TI NVIDIA",
+        "price": 25000,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rtx-3080ti.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 55,
+        "nameS": "RTX 2060 NVIDIA",
+        "price": 5000,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rtx2060.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 56,
+        "nameS": "RTX 2070TI NVIDIA",
+        "price": 7500,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rtx2070ti.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 57,
+        "nameS": "RADEON RX 6600XT",
+        "price": 3500,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rx-6600xt.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 58,
+        "nameS": "RADEON RX 6800XT",
+        "price": 7500,
+        "brand": "PLACA DE VIDEO",
+        "link": "./assets/rx-6800xt.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 59,
+        "nameS": "MOTHER Z490 LGA1200",
+        "price": 500,
+        "brand": "MOTHER",
+        "link": "./assets/z490.png",
+        "cantity": 1
+    },
+    {
+        "id": 60,
+        "nameS": "MOTHER Z590 LGA1200",
+        "price": 900,
+        "brand": "MOTHER",
+        "link": "./assets/z590.png",
+        "cantity": 1
+    },
+    {
+        "id": 61,
+        "nameS": "XTRIKE ME MOUSE GAMER",
+        "price": 200,
+        "brand": "PERIFERICO",
+        "link": "./assets/Xtrike-me.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 62,
+        "nameS": "YINDIAO TECLADO GAMER",
+        "price": 100,
+        "brand": "PERIFERICO",
+        "link": "./assets/yindiao-v4.jfif",
+        "cantity": 1
+    },
+    {
+        "id": 63,
+        "nameS": "MOTHER X570 AM3",
+        "price": 750,
+        "brand": "MOTHER",
+        "link": "./assets/x570.png",
+        "cantity": 1
+    },
+    {
+        "id": 64,
+        "nameS": "RAM VENGEANCE",
+        "price": 1000,
+        "brand": "RAM",
+        "link": "./assets/vengeance-ram.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 65,
+        "nameS": "CABLE VGA",
+        "price": 10,
+        "brand": "ADICIONALES",
+        "link": "./assets/vga.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 66,
+        "nameS": "THERMALTAKE V200 GABINETE GAMER",
+        "price": 775,
+        "brand": "GABINETE",
+        "link": "./assets/thermaltake-v200.jfif",
+        "cantity": 1
+    }
 ]

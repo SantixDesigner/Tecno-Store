@@ -1,9 +1,10 @@
-*{
+* {
     padding: 0;
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 @import "navbootstrap";
 @import "main-index";
 @import "loguin";
@@ -12,4 +13,3 @@
 @import "header";
 @import "footer";
 @import "mediaqueries";
-

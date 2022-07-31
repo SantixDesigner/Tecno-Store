@@ -10,7 +10,7 @@ let content = "";
 for (const cartS of cart) {
     content += `
     <div>
-        <img src="${cartS.link}">
+        <img src="${cartS.link}" alt="${cartS.nameS.replaceAll("_"," ")}">
         <p>${cartS.nameS.replaceAll("_", " ")}</p>
         <p>u$d${cartS.price * cartS.cantity}</p>
     </div>

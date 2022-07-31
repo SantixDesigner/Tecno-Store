@@ -135,7 +135,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         for (const productsCart of cartS) {
             let content = `
             <div>
-                <img src="${productsCart.link}" alt="${productsCart.nameS.replaceAll("_"," ")}>
+                <img src="${productsCart.link}" alt="${productsCart.nameS.replaceAll("_", " ")}">
                 <h2>${productsCart.nameS.replaceAll("_", " ")}</h2>
                 <span>Precio: </span>
                 <span class="borderDel">u$d<span>${productsCart.price * productsCart.cantity}</span></span>

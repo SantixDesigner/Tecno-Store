@@ -91,7 +91,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 <span>Precio: </span>
                 <span class="borderDel">u$d<span>${element.price}</span></span>
                 <p class = "nodisplay">brand${element.brand}</p>
-                <button class="buy" value="buy" data-id="${element.id}" data-name="${element.nameS.replaceAll(" ", "_")}" data-price="${element.price}" data-link="${element.link}" data-brand="${element.brand}" data-cantity="${element.cantity}">Comprar</button>
+                <button class="buy p-2" value="buy" data-id="${element.id}" data-name="${element.nameS.replaceAll(" ", "_")}" data-price="${element.price}" data-link="${element.link}" data-brand="${element.brand}" data-cantity="${element.cantity}">Comprar</button>
             </div>`; //El replaceAll con el fin de evitar errores
         } //Genera el render por defecto de los productos
         mainSection2.innerHTML = content;

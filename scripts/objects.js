@@ -1,5 +1,4 @@
-let componentsPC = [];
-class Product {
+export class Product{
     constructor(id, nameS, price, brand, url, cantity) {
         this.id = id;
         this.nameS = nameS;

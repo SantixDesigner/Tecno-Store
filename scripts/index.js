@@ -1,4 +1,6 @@
+import { Product } from './objects.js';
 if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
+    let componentsPC = [];
     fetch('./scripts/data.json').then(el => el.json()).then(el => {
         componentsPC = el;
         toRender(componentsPC);
@@ -64,7 +66,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             toRender(filterPrice);
         } //...Si no, por nombre de componentes
         else {
-            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN && el.brand.includes(eventA));
+            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN && (el.brand.includes(eventA) || el.nameS.includes(searchS)));
             toRender(filterPrice);
         } //y si no, que busque según la marca 
     })
@@ -256,17 +258,23 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     form.addEventListener('click', (event) => {
         btnSelect.addEventListener('click', (e) => {
             e.preventDefault();
-            eventA = event.target.value;
-            searchS = eventA;
-            event.target.value == "todas" ? brandTodas() : otherBrand(event);
+            if (event.target.value){
+                eventA = event.target.value;
+                searchS = eventA;
+            }
+            event.target.value == "todas" ? brandAll() : otherBrand(event);
         });
     }) //Filtrado por input
     const brandAll = () => {
-        toRender(componentsPC);
+        if (componentsPC.length > 0) {
+            toRender(componentsPC);
+        }
     }
     const otherBrand = e => {
         let filterList = componentsPC.filter(el => el.brand == e.target.value);
-        toRender(filterList);
+        if (filterList.length > 0){
+            toRender(filterList);
+        }
     }
     shopping.innerHTML = `${cantityEntireZ}`; //Esto lo inicio al final del código porque cuando recargamos la página es necesario que muestre los productos de la última vez.
 }

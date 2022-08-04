@@ -62,7 +62,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             toRender(filterPrice);
         } //Si searchS y eventA son iguales, entonces que filtre exclusivamente por precio...
         else if (eventA != searchS) {
-            let filterPrice = componentsPC.filter(el => el.nameS.includes(searchS) && el.price > minimumN && el.price < maximumN);
+            let filterPrice = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
             toRender(filterPrice);
         } //...Si no, por nombre de componentes
         else {

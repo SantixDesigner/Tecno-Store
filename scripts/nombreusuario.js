@@ -7,14 +7,14 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     window.location.replace('./inicios.html');
 } //Si ya tenemos el sessionStorage, entonces directamente reconecta a la página principal
 //Guardado de usuarios
-class Usuario {
+class User {
     constructor(user, password) {
         this.user = user;
         this.password = password;
     }
 } //Clase que genera usuarios
-let guardarUsuario = [];
-let usuario;
+let saveUsers = [];
+let userM;
 let login;
 let passwordS;
 createUsers.addEventListener('click', (e) => {
@@ -32,10 +32,10 @@ createUsers.addEventListener('click', (e) => {
                 Swal.showValidationMessage(`Por favor, ingresa un usuario y una contraseña`);
             }
             else {
-                usuario = new Usuario(login, passwordS);
-                guardarUsuario.push(usuario);
-                localStorage.setItem("users", JSON.stringify(guardarUsuario));
-            } //Guarda el usuario en el localStorage
+                userM = new User(login, passwordS);
+                saveUsers.push(userM);
+                localStorage.setItem("users", JSON.stringify(saveUsers));
+            } //Guarda el user en el localStorage
             return { login: login, password: passwordS };
         }
     }).then((result) => {
@@ -56,13 +56,13 @@ password.addEventListener('input', () => {
 }) //Guarda valores de los inputs
 save.addEventListener('click', (e) => {
     e.preventDefault();
-    let findUser = guardarUsuario.filter(el => userN == el.user && passwordN == el.password);
+    let findUser = saveUsers.filter(el => userN == el.user && passwordN == el.password);
     let nombre = "";
-    guardarUsuario.forEach(el => {
+    saveUsers.forEach(el => {
         el.user == userN ? nombre = userN : null; //Si el.user es igual a userN, entonces que el nombre sea igual, si no, nulo
     });
     let passwordX = "";
-    guardarUsuario.forEach(el => {
+    saveUsers.forEach(el => {
         el.password == passwordN ? passwordX = passwordN : null; //Lo mismo pero con la contraseña
     })
     if (nombre && passwordX) {
@@ -82,5 +82,5 @@ save.addEventListener('click', (e) => {
     } //Si no se encuentra en el array, da un error
 })
 if (localStorage.getItem("users")) {
-    guardarUsuario = JSON.parse(localStorage.getItem("users"));
+    saveUsers = JSON.parse(localStorage.getItem("users"));
 } //Cada vez que iniciemos la página, automaticamente se guardan los usuarios previos

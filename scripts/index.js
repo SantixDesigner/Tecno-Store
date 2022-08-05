@@ -1,10 +1,18 @@
 import { Product } from './objects.js';
 if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     let componentsPC = [];
-    fetch('./scripts/data.json').then(el => el.json()).then(el => {
-        componentsPC = el;
+    const componentsLoad = async() => {
+        const response = await fetch('./scripts/data.json');
+        componentsPC = await response.json();
         toRender(componentsPC);
-    });
+    }
+    componentsLoad();
+    let header = document.getElementById('header-index');
+    let username = document.createElement('p');
+    let usernameN = sessionStorage.getItem('username');
+    username.innerHTML = `¡Bienvenido ${usernameN}! Espero que disfrutes tu estadía aquí ^-^`;
+    header.append(username);
+    //Bienvenida
     let inputSearch = document.getElementById('inputSearch');
     let search = document.getElementById('search');
     let searchS = "";
@@ -70,11 +78,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             toRender(filterPrice);
         } //y si no, que busque según la marca 
     })
-    let header = document.getElementById('header-index');
-    let username = document.createElement('p');
-    let usernameN = sessionStorage.getItem('username');
-    username.innerHTML = `¡Bienvenido ${usernameN}! Espero que disfrutes tu estadía aquí ^-^`;
-    header.append(username);
+    let mainSection3 = document.getElementById('main-section-3');
     let shopping = document.getElementById('shopping');
     shopping.addEventListener('click', () => {
         document.querySelector('.main-section-3').classList.toggle('hide');
@@ -96,7 +100,6 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         } //Genera el render por defecto de los productos
         mainSection2.innerHTML = content;
     }
-    let mainSection3 = document.getElementById('main-section-3');
     let cart = [];
     const messageBuy = (product) => {
         let toastContainer = document.getElementById('container-toast');
@@ -151,7 +154,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         } //Muestra los componentes, agregándolos al mainSectionHTML
         localStorage.setItem("cart", JSON.stringify(cart));
         mainSection3.innerHTML = mainSectionHTML;
-        reSearch();
+        reSearch(); //El reSearch averigua la cantidad de productos en el carrito.
         let separator = document.createElement('div');
         separator.innerHTML = `
         <p>Precio Total: u$d${entireZ}</p>

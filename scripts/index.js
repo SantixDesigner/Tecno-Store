@@ -205,13 +205,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         cart.filter(item => {
             if (item.id == id) {
                 item.cantity--;
-                if (item.cantity < 1) {
-                    delProduct(id);
-                }
-                else if (item.cantity >= 1){
-                    console.log(item.cantity);
-                    removeProduct(findProduct.nameS);
-                }
+                item.cantity < 1 ? delProduct(id) : removeProduct(findProduct.nameS);
             }
         })
         showCart(cart); //Esto elimina un producto cada que se ejecuta

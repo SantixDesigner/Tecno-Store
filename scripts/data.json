@@ -526,5 +526,53 @@
         "brand": "GABINETE",
         "link": "./assets/thermaltake-v200.jfif",
         "cantity": 1
+    },
+    {
+        "id": 67,
+        "nameS": "I5 10400F",
+        "price": 900,
+        "brand": "INTEL",
+        "link": "./assets/i5-10400f.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 68,
+        "nameS": "Ryzen 5 2600",
+        "price": 900,
+        "brand": "AMD",
+        "link": "./assets/Ryzen5.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 69,
+        "nameS": "Ryzen 9 1900x",
+        "price": 900,
+        "brand": "AMD",
+        "link": "./assets/Ryzen9.jpg",
+        "cantity": 1
+    },
+    {
+        "id": 70,
+        "nameS": "Ryzen 7 5800x",
+        "price": 900,
+        "brand": "AMD",
+        "link": "./assets/Ryzen7.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 71,
+        "nameS": "Ryzen 5 1400",
+        "price": 900,
+        "brand": "AMD",
+        "link": "./assets/Ryzen5.jpeg",
+        "cantity": 1
+    },
+    {
+        "id": 72,
+        "nameS": "i5 11400F",
+        "price": 900,
+        "brand": "INTEL",
+        "link": "./assets/i5-11400F.png",
+        "cantity": 1
     }
 ]

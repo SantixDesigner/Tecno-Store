@@ -59,7 +59,7 @@ buyZr.addEventListener('click', (e) => {
             icon: "success",
             title: "La compra se hizo con éxito",
             text: "Has comprado " + cantity + " productos con éxito",
-            text: `Se pagará en ${installmen.value} sin interés de u$d${Math.round((endPrice / installmen.value) * 1.21)}`,
+            text: `Se pagará en ${installmen.value} cuotas sin interés de u$d${Math.round((endPrice / installmen.value) * 1.21)}`,
             footer: `Le enviaremos los productos a la persona ${nameX} ${surnameX} en los próximos minutos a ${dirX}, con información a ${mailX}`,
         })
         localStorage.removeItem("cart");

@@ -202,12 +202,15 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 return item.nameS;
             }
         })
-        removeProduct(findProduct.nameS);
         cart.filter(item => {
             if (item.id == id) {
                 item.cantity--;
                 if (item.cantity < 1) {
                     delProduct(id);
+                }
+                else if (item.cantity >= 1){
+                    console.log(item.cantity);
+                    removeProduct(findProduct.nameS);
                 }
             }
         })

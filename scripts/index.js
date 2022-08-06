@@ -28,7 +28,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             }
         }
         const valueDifDefault = () => {
-            filter = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
+            filter = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price >= minimumN && el.price <= maximumN);
             if (e.key == "Enter") {
                 e.preventDefault();
                 toRender(filter);
@@ -66,15 +66,15 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
     importT.addEventListener('click', (e) => {
         e.preventDefault();
         if (eventA == "todas" || eventA == "" && searchS == eventA) {
-            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN);
+            let filterPrice = componentsPC.filter(el => el.price >= minimumN && el.price <= maximumN);
             toRender(filterPrice);
         } //Si searchS y eventA son iguales, entonces que filtre exclusivamente por precio...
         else if (eventA != searchS) {
-            let filterPrice = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price > minimumN && el.price < maximumN);
+            let filterPrice = componentsPC.filter(el => (el.nameS.includes(searchS) || el.brand.includes(searchS)) && el.price >= minimumN && el.price <= maximumN);
             toRender(filterPrice);
         } //...Si no, por nombre de componentes
         else {
-            let filterPrice = componentsPC.filter(el => el.price > minimumN && el.price < maximumN && (el.brand.includes(eventA) || el.nameS.includes(searchS)));
+            let filterPrice = componentsPC.filter(el => el.price >= minimumN && el.price <= maximumN && (el.brand.includes(eventA) || el.nameS.includes(searchS)));
             toRender(filterPrice);
         } //y si no, que busque según la marca 
     })

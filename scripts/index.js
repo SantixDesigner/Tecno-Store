@@ -5,7 +5,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
         const response = await fetch('./scripts/data.json');
         componentsPC = await response.json();
         toRender(componentsPC);
-    }
+    } //fetch() cargado mediante async
     componentsLoad();
     let header = document.getElementById('header-index');
     let username = document.createElement('p');
@@ -35,7 +35,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
             }
         }
         minimumN == 0 && maximumN == 100000 ? valueDefault() : valueDifDefault();
-    });
+    }); //Si mantiene el rango por defecto, establece el default, si no, la diferencia del default
     search.addEventListener('click', (e) => {
         e.preventDefault();
         toRender(filter);
@@ -116,7 +116,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 }, 2000)
             }, 1500)
         }, 0)
-    }
+    } //Si comprás el producto, salta un mensaje de que el producto se agregó al carrito
     const buyS = (e) => {
         let product = new Product(e.target.dataset.id, e.target.dataset.name, e.target.dataset.price, e.target.dataset.brand, e.target.dataset.link, e.target.dataset.cantity);
         shopping.innerHTML = `${(cantityEntireZ + 1)}`;
@@ -180,7 +180,7 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                     div.remove();
                 }, 2000)
             }, 1500)
-        }, 0)
+        }, 0) //Salta un mensaje al eliminar un producto
     }
     const addProduct = (id) => {
         cart.find(item => {
@@ -236,21 +236,21 @@ if (sessionStorage.getItem("username") && sessionStorage.getItem("password")) {
                 cantityEntireZ -= searchProperties[0].cantity;
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
                 delProduct(e.target.dataset.id);
-            }
+            } //Elimina directamente
             if (e.target.dataset.ida) {
                 let searchProperties = cart.filter(el => el.id == e.target.dataset.ida);
                 entireZ += searchProperties[0].price;
                 cantityEntireZ++;
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
                 addProduct(e.target.dataset.ida);
-            }
+            } //Agrega uno por uno
             if (e.target.dataset.ids) {
                 let searchProperties = cart.filter(el => el.id == e.target.dataset.ids);
                 entireZ -= searchProperties[0].price;
                 cantityEntireZ--;
                 shopping.innerHTML = `${parseInt(cantityEntireZ)}`;
                 delOne(e.target.dataset.ids);
-            }
+            } //Elimina uno por uno
         }
     }) //Si el e.target es distinto de cualquier otro lado del mainSection3 que no sean los productos, no arroja error.
     const buying = (mainSection2) => {
